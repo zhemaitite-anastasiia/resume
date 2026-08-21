@@ -17,11 +17,11 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/headshot.png',
     alt: 'Portrait of the candidate',
-    className: 'left-[2%] top-[30%]',
-    size: 168,
-    rot: -9,
+    className: 'left-[2%] top-[28%]',
+    size: 210,
+    rot: -7,
     delay: 0,
-    variant: 'photo',
+    variant: 'cutout',
   },
   {
     src: '/stickers/email-me.png',
