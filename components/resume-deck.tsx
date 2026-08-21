@@ -45,8 +45,8 @@ export function ResumeDeck() {
           className="absolute inset-x-6 top-6 -z-20 h-full rounded-3xl border border-border bg-card/30"
         />
 
-        <article className="flex min-h-[460px] flex-col rounded-3xl border border-border bg-card p-7 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] sm:p-9">
-          <header className="mb-7 flex items-center justify-between">
+        <article className="flex min-h-[380px] flex-col rounded-3xl border border-border bg-card p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] sm:p-8">
+          <header className="mb-5 flex items-center justify-between">
             <p className="text-sm text-muted-foreground">
               <span className="text-foreground">{profile.name}</span>
             </p>
