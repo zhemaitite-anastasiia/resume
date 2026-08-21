@@ -42,7 +42,7 @@ export function ResumeDeck() {
           aria-hidden
           alt=""
           src={`${basePath}/stickers/headshot.png`}
-          className="pointer-events-none absolute bottom-full left-1/2 -z-10 hidden w-[236px] -translate-x-1/2 translate-y-[58px] drop-shadow-[0_14px_28px_rgba(0,0,0,0.7)] md:block"
+          className="pointer-events-none absolute bottom-full left-1/2 z-20 hidden w-[196px] -translate-x-1/2 translate-y-[14px] drop-shadow-[0_18px_32px_rgba(0,0,0,0.75)] md:block"
           style={{ rotate: '-4deg' }}
         />
         <div
@@ -54,7 +54,7 @@ export function ResumeDeck() {
           className="absolute inset-x-6 top-6 -z-20 h-full rounded-3xl border border-border bg-card/30"
         />
 
-        <article className="flex min-h-[380px] flex-col rounded-3xl border border-border bg-card p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] sm:p-8">
+        <article className="flex min-h-[340px] flex-col rounded-3xl border border-border bg-card p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] sm:p-8">
           <header className="mb-5 flex items-center justify-between">
             <p className="text-sm text-muted-foreground">
               <span className="text-foreground">{profile.name}</span>
