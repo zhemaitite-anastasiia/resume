@@ -51,10 +51,11 @@ export type Slide =
 export const slides: Slide[] = [
   {
     kind: 'intro',
-    title: "Hi, I'm Anastasiia — a Platform / DevOps Engineer in Chicago, IL with 5+ years of experience.",
+    title: "Hi, I'm Anastasiia — a Platform and DevOps Engineer in Chicago.",
     lines: [
-      'Production EKS on AWS across fintech and healthcare.',
-      'GitOps delivery, zero-trust access, SLO-based alerting, and cost attribution.',
+      '5+ years building production EKS on AWS.',
+      'Platforms serving 70+ engineers across 20+ microservices.',
+      'CKA · CKAD · Terraform Associate · AWS Solutions Architect.',
     ],
     cta: { label: 'Get in touch ↗', href: `mailto:${profile.email}` },
   },
@@ -63,13 +64,16 @@ export const slides: Slide[] = [
     heading: '// summary',
     lines: [
       {
-        text: 'Platform / DevOps Engineer with 5+ years building production EKS platforms on AWS across fintech and healthcare.',
+        text: 'I build the delivery, access, and cost layers a platform team owns.',
       },
       {
-        text: 'Core focus: GitOps delivery, zero-trust security, SLO-based alerting, and cost attribution.',
+        text: 'GitOps delivery with Terraform and ArgoCD. Zero-trust access with Istio, OIDC, and IRSA. SLO-based alerting on Datadog and Prometheus. Namespace-level cost attribution with Kubecost.',
       },
       {
-        text: 'Integrates Claude Code and read-only MCP tooling so teams self-serve secrets and on-call responders get instant root-cause context in Slack.',
+        text: 'Mostly in fintech and healthcare — regulated environments where who can reach what, and the evidence of it, is part of the design.',
+      },
+      {
+        text: 'I integrate Claude Code and read-only MCP tooling on top, so teams self-serve secrets and on-call responders get root-cause context in Slack.',
       },
     ],
   },
