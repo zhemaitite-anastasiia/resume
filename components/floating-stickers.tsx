@@ -56,8 +56,8 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/dog.png',
     alt: 'Dog',
-    className: 'left-[15%] top-[76%]',
-    size: 118,
+    className: 'right-[10%] top-[35%]',
+    size: 132,
     rot: 6,
     delay: 1.8,
     variant: 'cutout',
@@ -65,7 +65,7 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/plane.png',
     alt: 'Airplane',
-    className: 'right-[10%] top-[37%]',
+    className: 'left-[13%] top-[78%]',
     size: 152,
     rot: 11,
     delay: 2.1,
