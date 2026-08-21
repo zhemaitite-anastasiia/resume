@@ -1,5 +1,7 @@
 import Image from 'next/image'
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 type Sticker = {
   src: string
   alt: string
@@ -57,7 +59,7 @@ export function FloatingStickers() {
               }
             >
               <Image
-                src={s.src || '/placeholder.svg'}
+                src={`${basePath}${s.src || '/placeholder.svg'}`}
                 alt={s.alt}
                 width={s.size}
                 height={s.size}
