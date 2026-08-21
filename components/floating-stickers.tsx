@@ -44,10 +44,19 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/cka-badge.png',
     alt: 'Certified Kubernetes Administrator',
-    className: 'left-[5%] top-[60%]',
-    size: 156,
+    className: 'left-[4%] top-[56%]',
+    size: 138,
     rot: 8,
     delay: 0.9,
+    variant: 'cutout',
+  },
+  {
+    src: '/stickers/dog.png',
+    alt: 'Dog',
+    className: 'left-[13%] top-[72%]',
+    size: 132,
+    rot: 6,
+    delay: 1.8,
     variant: 'cutout',
   },
   {
