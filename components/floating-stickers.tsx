@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { profile } from '@/lib/resume-data'
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
@@ -10,6 +11,7 @@ type Sticker = {
   rot: number
   delay: number
   variant?: 'logo' | 'photo' | 'cutout'
+  href?: string
 }
 
 // Positioned around the deck, avoiding the center column where the card sits.
@@ -26,6 +28,7 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/email-me.png',
     alt: 'Email me',
+    href: `mailto:${profile.email}`,
     className: 'left-[8%] top-[3%]',
     size: 104,
     rot: -8,
@@ -71,6 +74,7 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/linkedin.png',
     alt: 'LinkedIn',
+    href: profile.linkedinUrl,
     className: 'left-[17%] top-[54%]',
     size: 92,
     rot: -11,
@@ -99,14 +103,24 @@ const stickers: Sticker[] = [
 
 export function FloatingStickers() {
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden md:block">
+    <div className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden md:block">
       {stickers.map((s) => {
         const isPhoto = s.variant === 'photo'
         const isCutout = s.variant === 'cutout'
+        const Frame = s.href ? 'a' : 'div'
+        const frameProps = s.href
+          ? {
+              href: s.href,
+              target: s.href.startsWith('http') ? '_blank' : undefined,
+              rel: s.href.startsWith('http') ? 'noreferrer' : undefined,
+              'aria-label': s.alt,
+              className: `absolute pointer-events-auto cursor-pointer transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${s.className}`,
+            }
+          : { 'aria-hidden': true, className: `absolute ${s.className}` }
         return (
-          <div
+          <Frame
             key={s.alt}
-            className={`absolute ${s.className}`}
+            {...frameProps}
             style={
               {
                 '--rot': `${s.rot}deg`,
@@ -133,7 +147,7 @@ export function FloatingStickers() {
                 style={isCutout ? { width: s.size, height: 'auto' } : { width: s.size, height: s.size }}
               />
             </div>
-          </div>
+          </Frame>
         )
       })}
     </div>
