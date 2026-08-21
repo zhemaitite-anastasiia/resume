@@ -9,7 +9,7 @@ type Sticker = {
   size: number
   rot: number
   delay: number
-  variant?: 'logo' | 'photo'
+  variant?: 'logo' | 'photo' | 'cutout'
 }
 
 // Positioned around the deck, avoiding the center column where the card sits.
@@ -19,9 +19,36 @@ const stickers: Sticker[] = [
     alt: 'Portrait of the candidate',
     className: 'left-[2%] top-[30%]',
     size: 168,
-    rot: -7,
+    rot: -9,
     delay: 0,
     variant: 'photo',
+  },
+  {
+    src: '/stickers/email-me.png',
+    alt: 'Email me',
+    className: 'left-[5%] top-[8%]',
+    size: 128,
+    rot: -8,
+    delay: 0.6,
+    variant: 'cutout',
+  },
+  {
+    src: '/stickers/laptop.png',
+    alt: 'Laptop',
+    className: 'right-[6%] top-[16%]',
+    size: 168,
+    rot: 7,
+    delay: 1.1,
+    variant: 'cutout',
+  },
+  {
+    src: '/stickers/cap-point.png',
+    alt: 'Hand pointing at a cap',
+    className: 'right-[4%] top-[62%]',
+    size: 196,
+    rot: -6,
+    delay: 0.3,
+    variant: 'cutout',
   },
 ]
 
@@ -30,6 +57,7 @@ export function FloatingStickers() {
     <div aria-hidden className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden md:block">
       {stickers.map((s) => {
         const isPhoto = s.variant === 'photo'
+        const isCutout = s.variant === 'cutout'
         return (
           <div
             key={s.alt}
@@ -44,8 +72,10 @@ export function FloatingStickers() {
             <div
               className={
                 isPhoto
-                  ? 'overflow-hidden rounded-[26px] bg-white p-2 shadow-[0_18px_44px_-10px_rgba(0,0,0,0.85)] ring-1 ring-black/5'
-                  : 'rounded-2xl bg-white p-2.5 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.7)] ring-1 ring-black/5'
+                  ? 'overflow-hidden rounded-full bg-white p-[10px] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.9)] ring-1 ring-black/10'
+                  : isCutout
+                    ? 'drop-shadow-[0_14px_28px_rgba(0,0,0,0.7)]'
+                    : 'rounded-2xl bg-white p-2.5 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.7)] ring-1 ring-black/5'
               }
             >
               <Image
@@ -54,8 +84,8 @@ export function FloatingStickers() {
                 width={s.size}
                 height={s.size}
                 unoptimized
-                className={isPhoto ? 'block rounded-[18px] object-cover' : 'h-auto w-auto'}
-                style={{ width: s.size, height: s.size }}
+                className={isPhoto ? 'block rounded-full object-cover' : 'h-auto w-auto'}
+                style={isCutout ? { width: s.size, height: 'auto' } : { width: s.size, height: s.size }}
               />
             </div>
           </div>
