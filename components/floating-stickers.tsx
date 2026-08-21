@@ -19,8 +19,8 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/headshot.png',
     alt: 'Portrait of the candidate',
-    className: 'left-[0%] top-[1%] md:left-[37%] md:top-[0%]',
-    size: 252,
+    className: 'left-[0%] top-[1%] md:bottom-[418px] md:left-[38%] md:top-auto',
+    size: 236,
     mobileSize: 112,
     rot: -4,
     delay: 0,
@@ -107,7 +107,7 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/cap-point.png',
     alt: 'Hand pointing at a cap',
-    className: 'left-[17%] top-[84%]',
+    className: 'bottom-[4%] left-[15%] top-auto',
     size: 178,
     rot: -7,
     delay: 0.3,
