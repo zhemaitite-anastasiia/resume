@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { slides, profile } from '@/lib/resume-data'
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 import { SlideContent } from '@/components/slide-content'
 
 export function ResumeDeck() {
@@ -36,6 +38,13 @@ export function ResumeDeck() {
     <div className="relative z-10 w-full max-w-xl">
       {/* Stacked cards behind the active one */}
       <div className="relative">
+        <img
+          aria-hidden
+          alt=""
+          src={`${basePath}/stickers/headshot.png`}
+          className="pointer-events-none absolute bottom-full left-1/2 -z-10 hidden w-[236px] -translate-x-1/2 translate-y-[58px] drop-shadow-[0_14px_28px_rgba(0,0,0,0.7)] md:block"
+          style={{ rotate: '-4deg' }}
+        />
         <div
           aria-hidden
           className="absolute inset-x-3 top-3 -z-10 h-full rounded-3xl border border-border bg-card/60"
