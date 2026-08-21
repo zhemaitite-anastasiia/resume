@@ -42,6 +42,15 @@ const stickers: Sticker[] = [
     variant: 'cutout',
   },
   {
+    src: '/stickers/cka-badge.png',
+    alt: 'Certified Kubernetes Administrator',
+    className: 'left-[5%] top-[60%]',
+    size: 156,
+    rot: 8,
+    delay: 0.9,
+    variant: 'cutout',
+  },
+  {
     src: '/stickers/cap-point.png',
     alt: 'Hand pointing at a cap',
     className: 'right-[4%] top-[62%]',
