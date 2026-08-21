@@ -161,8 +161,8 @@
   --card: oklch(0.185 0.008 265);
   --card-foreground: oklch(0.96 0.003 240);
   --muted-foreground: oklch(0.66 0.01 260);
-  --accent: oklch(0.82 0.17 145);
-  --accent-foreground: oklch(0.18 0.02 150);
+  --accent: oklch(0.78 0.17 230);
+  --accent-foreground: oklch(0.18 0.03 240);
   --border: oklch(1 0 0 / 12%);
   --font-sans: var(--font-jetbrains), ui-monospace, monospace;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
