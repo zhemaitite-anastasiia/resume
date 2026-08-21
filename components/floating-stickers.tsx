@@ -23,16 +23,6 @@ const stickers: Sticker[] = [
     delay: 0,
     variant: 'photo',
   },
-  { src: '/logos/kubernetes.svg', alt: 'Kubernetes', className: 'left-[6%] top-[10%]', size: 66, rot: -12, delay: 0.5 },
-  { src: '/logos/aws.svg', alt: 'Amazon Web Services', className: 'left-[19%] top-[72%]', size: 62, rot: 8, delay: 0.6 },
-  { src: '/logos/terraform.svg', alt: 'Terraform', className: 'left-[21%] top-[16%]', size: 56, rot: 14, delay: 1.1 },
-  { src: '/logos/docker.svg', alt: 'Docker', className: 'left-[3%] top-[80%]', size: 58, rot: 10, delay: 0.9 },
-  { src: '/logos/datadog.svg', alt: 'Datadog', className: 'right-[6%] top-[12%]', size: 64, rot: 12, delay: 0.4 },
-  { src: '/logos/grafana.svg', alt: 'Grafana', className: 'right-[3%] top-[40%]', size: 60, rot: -10, delay: 1.3 },
-  { src: '/logos/prometheus.svg', alt: 'Prometheus', className: 'right-[11%] top-[68%]', size: 62, rot: 9, delay: 0.7 },
-  { src: '/logos/kafka.svg', alt: 'Apache Kafka', className: 'right-[19%] top-[82%]', size: 54, rot: -14, delay: 0.2 },
-  { src: '/logos/github.svg', alt: 'GitHub', className: 'right-[19%] top-[6%]', size: 58, rot: -6, delay: 1.0 },
-  { src: '/logos/argocd.svg', alt: 'Argo CD', className: 'right-[13%] top-[26%]', size: 52, rot: -16, delay: 1.5 },
 ]
 
 export function FloatingStickers() {
