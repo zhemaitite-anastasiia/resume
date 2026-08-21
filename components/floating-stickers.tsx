@@ -9,6 +9,7 @@ type Sticker = {
   className: string
   size: number
   mobileSize?: number
+  mobileOnly?: boolean
   rot: number
   delay: number
   variant?: 'logo' | 'photo' | 'cutout'
@@ -19,9 +20,10 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/headshot.png',
     alt: 'Portrait of the candidate',
-    className: 'left-[0%] top-[1%] md:bottom-[418px] md:left-[38%] md:top-auto',
+    className: 'left-[0%] top-[1%]',
     size: 236,
     mobileSize: 112,
+    mobileOnly: true,
     rot: -4,
     delay: 0,
     variant: 'cutout',
@@ -121,7 +123,7 @@ export function FloatingStickers() {
       {stickers.map((s) => {
         const isPhoto = s.variant === 'photo'
         const isCutout = s.variant === 'cutout'
-        const vis = s.mobileSize ? '' : 'hidden md:block'
+        const vis = s.mobileOnly ? 'md:hidden' : s.mobileSize ? '' : 'hidden md:block'
         const Frame = s.href ? 'a' : 'div'
         const frameProps = s.href
           ? {
