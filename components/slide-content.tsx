@@ -4,6 +4,40 @@ import type { Slide } from '@/lib/resume-data'
 import { playPop } from '@/components/contact-modal'
 import { useTypewriter } from '@/hooks/use-typewriter'
 
+// Terms worth a reader's eye. Longest first so "Argo CD" wins over "Argo",
+// and "SSM Session Manager" over "Secrets Manager".
+const KEYWORDS = [
+  'SSM Session Manager', 'AWS Secrets Manager', 'Secrets Store CSI', 'Secrets Manager',
+  'Model Context Protocol', 'Solutions Architect', 'GitHub Actions', 'DNS64/NAT64',
+  'zero standing', 'Claude Code', 'sync waves', 'Kubernetes', 'PostgreSQL', 'Prometheus',
+  'zero-trust', 'Terraform', 'PagerDuty', 'Kubecost', 'Teleport', 'Datadog', 'Grafana',
+  'IPv6-only', 'Strimzi', 'FluxCD', 'ArgoCD', 'Argo CD', 'GitOps', 'Velero', 'Istio',
+  'Kafka', 'Helm', 'IRSA', 'OIDC', 'mTLS', 'CKAD', 'MCP', 'CSI', 'SLO', 'IAM', 'PCI',
+  'CKA', 'EKS', 'AWS', 'p99', 'IPv6', 'IPv4',
+]
+const KEYWORD_RE = new RegExp(
+  `\\b(${KEYWORDS.map((k) => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})\\b`,
+  'g',
+)
+
+/** Splits text so recognised technologies render in the accent colour. */
+function hl(text: string) {
+  const out: (string | React.ReactElement)[] = []
+  let last = 0
+  for (const m of text.matchAll(KEYWORD_RE)) {
+    const i = m.index ?? 0
+    if (i > last) out.push(text.slice(last, i))
+    out.push(
+      <span key={`${i}-${m[0]}`} className="text-accent">
+        {m[0]}
+      </span>,
+    )
+    last = i + m[0].length
+  }
+  if (last < text.length) out.push(text.slice(last))
+  return out
+}
+
 export function SlideContent({ slide, index }: { slide: Slide; index: number }) {
   switch (slide.kind) {
     case 'intro':
@@ -86,7 +120,7 @@ function TextSlide({ slide, index }: { slide: Extract<Slide, { kind: 'text' }>; 
         <div className="mt-4 animate-slide-in space-y-4">
           {slide.lines.slice(1).map((l) => (
             <p key={l.text} className="text-balance leading-relaxed text-foreground/90">
-              {l.text}
+              {hl(l.text)}
             </p>
           ))}
         </div>
@@ -117,7 +151,7 @@ function RoleSlide({ slide }: { slide: Extract<Slide, { kind: 'role' }> }) {
           l.indent ? (
             <p key={l.text} className="pl-4 text-[15px] leading-relaxed text-foreground/90">
               <span className="mr-2 text-accent">→</span>
-              {l.text}
+              {hl(l.text)}
             </p>
           ) : (
             <p key={l.text} className="text-sm font-semibold text-foreground">
