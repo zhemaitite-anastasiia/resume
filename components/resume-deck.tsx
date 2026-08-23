@@ -1,134 +1,145 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { ChevronDown } from 'lucide-react'
 import { slides, profile } from '@/lib/resume-data'
-
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 import { SlideContent } from '@/components/slide-content'
 
-export function ResumeDeck() {
-  const [index, setIndex] = useState(0)
-  const total = slides.length
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
-  const go = useCallback(
-    (dir: 1 | -1) => {
-      setIndex((prev) => Math.min(Math.max(prev + dir, 0), total - 1))
-    },
-    [total],
-  )
+export function ResumeDeck() {
+  const [active, setActive] = useState(0)
+  const sectionRefs = useRef<(HTMLElement | null)[]>([])
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
-        e.preventDefault()
-        go(1)
-      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-        e.preventDefault()
-        go(-1)
-      }
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [go])
+    const els = sectionRefs.current.filter(Boolean) as HTMLElement[]
 
-  const slide = slides[index]
+    const reveal = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-revealed')
+            reveal.unobserve(e.target)
+          }
+        })
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -12% 0px' },
+    )
+
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const i = Number((e.target as HTMLElement).dataset.index)
+            if (!Number.isNaN(i)) setActive(i)
+          }
+        })
+      },
+      { rootMargin: '-45% 0px -45% 0px' },
+    )
+
+    els.forEach((el) => {
+      reveal.observe(el)
+      spy.observe(el)
+    })
+    return () => {
+      reveal.disconnect()
+      spy.disconnect()
+    }
+  }, [])
+
+  const goTo = (i: number) => {
+    sectionRefs.current[i]?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
 
   return (
-    <div className="relative z-10 w-full max-w-xl">
-      {/* Stacked cards behind the active one */}
-      <div className="relative">
-        <img
-          aria-hidden
-          alt=""
-          src={`${basePath}/stickers/headshot.png`}
-          className="pointer-events-none absolute bottom-full left-1/2 z-20 hidden w-[196px] -translate-x-1/2 translate-y-[14px] drop-shadow-[0_18px_32px_rgba(0,0,0,0.75)] md:block"
-          style={{ rotate: '-4deg' }}
-        />
-        <div
-          aria-hidden
-          className="absolute inset-x-3 top-3 -z-10 h-full rounded-3xl border border-border bg-card/60"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-x-6 top-6 -z-20 h-full rounded-3xl border border-border bg-card/30"
-        />
-
-        <article className="flex min-h-[340px] flex-col rounded-3xl border border-border bg-card p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] sm:p-8">
-          <header className="mb-5 flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">
-              <span className="text-foreground">{profile.name}</span>
-            </p>
-            <div className="flex items-center gap-3">
-              <span className="text-sm tabular-nums">
-                <span className="font-bold text-foreground">{index + 1}</span>
-                <span className="mx-1 text-muted-foreground">/</span>
-                <span className="text-muted-foreground">{total}</span>
-              </span>
-              <div className="flex items-center gap-1.5">
-                <NavButton
-                  label="Previous slide"
-                  onClick={() => go(-1)}
-                  disabled={index === 0}
-                >
-                  <ChevronUp className="h-4 w-4" />
-                </NavButton>
-                <NavButton
-                  label="Next slide"
-                  onClick={() => go(1)}
-                  disabled={index === total - 1}
-                >
-                  <ChevronDown className="h-4 w-4" />
-                </NavButton>
-              </div>
-            </div>
-          </header>
-
-          <div key={index} className="flex flex-1 flex-col">
-            <SlideContent slide={slide} index={index} />
-          </div>
-        </article>
-      </div>
-
-      {/* Progress dots */}
-      <div className="mt-6 flex items-center justify-center gap-1.5">
-        {slides.map((_, i) => (
+    <>
+      {/* progress rail */}
+      <nav
+        aria-label="Sections"
+        className="fixed right-5 top-1/2 z-30 hidden -translate-y-1/2 flex-col items-center gap-2.5 lg:flex"
+      >
+        {slides.map((s, i) => (
           <button
             key={i}
             type="button"
-            aria-label={`Go to slide ${i + 1}`}
-            aria-current={i === index}
-            onClick={() => setIndex(i)}
-            className={`h-1.5 rounded-full transition-all ${
-              i === index ? 'w-6 bg-accent' : 'w-1.5 bg-border hover:bg-muted-foreground'
+            aria-label={`Go to section ${i + 1}`}
+            aria-current={i === active}
+            onClick={() => goTo(i)}
+            className={`rounded-full transition-all duration-300 ${
+              i === active
+                ? 'h-6 w-1.5 bg-accent'
+                : 'h-1.5 w-1.5 bg-border hover:bg-muted-foreground'
             }`}
           />
         ))}
-      </div>
-    </div>
-  )
-}
+      </nav>
 
-function NavButton({
-  label,
-  onClick,
-  disabled,
-  children,
-}: {
-  label: string
-  onClick: () => void
-  disabled?: boolean
-  children: React.ReactNode
-}) {
-  return (
-    <button
-      type="button"
-      aria-label={label}
-      onClick={onClick}
-      disabled={disabled}
-      className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-accent hover:text-accent-foreground disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-foreground"
-    >
-      {children}
-    </button>
+      <div className="relative z-10 w-full">
+        {slides.map((slide, i) => {
+          const isHero = i === 0
+          return (
+            <section
+              key={i}
+              data-index={i}
+              ref={(el) => {
+                sectionRefs.current[i] = el
+              }}
+              className={`reveal mx-auto flex w-full max-w-xl flex-col justify-center px-1 ${
+                isHero ? 'min-h-[92dvh] pt-[19vh]' : 'min-h-[62vh] py-10'
+              }`}
+            >
+              <div className="relative">
+                {isHero && (
+                  <img
+                    aria-hidden
+                    alt=""
+                    src={`${basePath}/stickers/headshot.png`}
+                    className="pointer-events-none absolute bottom-full left-1/2 z-20 hidden w-[196px] -translate-x-1/2 translate-y-[14px] drop-shadow-[0_18px_32px_rgba(0,0,0,0.75)] md:block"
+                    style={{ rotate: '-4deg' }}
+                  />
+                )}
+                <div
+                  aria-hidden
+                  className="absolute inset-x-3 top-3 -z-10 h-full rounded-3xl border border-border bg-card/60"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-x-6 top-6 -z-20 h-full rounded-3xl border border-border bg-card/30"
+                />
+
+                <article className="flex flex-col rounded-3xl border border-border bg-card p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] sm:p-8">
+                  <header className="mb-5 flex items-center justify-between">
+                    <p className="text-sm text-muted-foreground">
+                      <span className="text-foreground">{profile.name}</span>
+                    </p>
+                    <span className="text-sm tabular-nums">
+                      <span className="font-bold text-foreground">{i + 1}</span>
+                      <span className="mx-1 text-muted-foreground">/</span>
+                      <span className="text-muted-foreground">{slides.length}</span>
+                    </span>
+                  </header>
+
+                  <div className="flex flex-1 flex-col">
+                    <SlideContent slide={slide} index={i} />
+                  </div>
+                </article>
+              </div>
+
+              {isHero && (
+                <button
+                  type="button"
+                  onClick={() => goTo(1)}
+                  className="group mx-auto mt-10 flex flex-col items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <span className="tracking-widest uppercase">Scroll</span>
+                  <ChevronDown className="h-4 w-4 animate-bounce transition-transform group-hover:translate-y-0.5" />
+                </button>
+              )}
+            </section>
+          )
+        })}
+      </div>
+    </>
   )
 }
