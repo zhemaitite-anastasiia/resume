@@ -30,7 +30,7 @@ const stickers: Sticker[] = [
     alt: 'Portrait of the candidate',
     drift: true,
     note: 'That\'s me. Platform engineer, Chicago. I spend my days making sure other engineers never have to think about the platform.',
-    className: 'left-[9%] top-[6%] md:left-[11%] md:top-[8.5%]',
+    className: 'left-[9%] top-[6%] md:left-[8%] md:top-[3%]',
     size: 190,
     mobileSize: 104,
     rot: -4,
