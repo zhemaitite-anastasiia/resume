@@ -90,15 +90,7 @@ export function ResumeDeck() {
               }`}
             >
               <div className="relative">
-                {isHero && (
-                  <img
-                    aria-hidden
-                    alt=""
-                    src={`${basePath}/stickers/headshot.png`}
-                    className="pointer-events-none absolute bottom-full left-1/2 z-20 hidden w-[196px] -translate-x-1/2 translate-y-[14px] drop-shadow-[0_18px_32px_rgba(0,0,0,0.75)] md:block"
-                    style={{ rotate: '-4deg' }}
-                  />
-                )}
+
                 <div
                   aria-hidden
                   className="absolute inset-x-3 top-3 -z-10 h-full rounded-3xl border border-[color-mix(in_srgb,var(--brand-navy)_70%,white_10%)] bg-[color-mix(in_srgb,var(--brand-navy)_45%,var(--card))]"
