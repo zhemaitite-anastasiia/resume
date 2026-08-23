@@ -30,7 +30,7 @@ const stickers: Sticker[] = [
     alt: 'Portrait of the candidate',
     drift: true,
     note: 'That\'s me. Platform engineer, Chicago. I spend my days making sure other engineers never have to think about the platform.',
-    className: 'left-[4%] top-[4vh] md:left-[7%] md:top-[3%]',
+    className: 'left-[4%] top-[4vh] md:left-[3%] md:top-[3%]',
     size: 232,
     mobileSize: 104,
     rot: -4,
@@ -129,7 +129,7 @@ const stickers: Sticker[] = [
     src: '/stickers/cap-point.png',
     alt: 'Hand pointing at a cap',
     note: 'Action always. It\'s the thing I fall back on when a problem is big enough that planning starts to feel like avoiding it.',
-    className: 'left-[6%] top-[88.9%] md:left-auto md:right-[7%] md:top-[76%]',
+    className: 'left-[6%] top-[88.9%] md:left-auto md:right-[3%] md:top-[76%]',
     size: 176,
     mobileSize: 94,
     rot: -7,
@@ -204,7 +204,9 @@ export function FloatingStickers() {
           <div
             key={s.alt}
             data-note-root={s.note ? '' : undefined}
-            className={`absolute ${vis} ${s.className}`}
+            onMouseEnter={s.note ? () => setOpenNote(s.alt) : undefined}
+            onMouseLeave={s.note ? () => setOpenNote((cur) => (cur === s.alt ? null : cur)) : undefined}
+            className={`absolute ${vis} ${s.note ? 'pointer-events-auto' : ''} ${s.className}`}
             style={
               {
                 '--sz': `${s.mobileSize ?? s.size}px`,
