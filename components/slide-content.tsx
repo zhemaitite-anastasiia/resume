@@ -2,6 +2,8 @@
 
 import type { Slide } from '@/lib/resume-data'
 import { playPop } from '@/components/contact-modal'
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 import { useTypewriter } from '@/hooks/use-typewriter'
 
 // Terms worth a reader's eye. Longest first so "Argo CD" wins over "Argo",
@@ -57,6 +59,20 @@ export function SlideContent({ slide, index }: { slide: Slide; index: number }) 
   }
 }
 
+function ResumeButton() {
+  return (
+    <a
+      href={`${basePath}/Anastasiia_Zhemaitite_Platform_Engineer.pdf`}
+      target="_blank"
+      rel="noreferrer"
+      className="mt-8 inline-flex w-fit items-center gap-1.5 rounded-full border border-foreground/40 px-5 py-2 text-sm font-semibold text-foreground transition-colors hover:border-foreground hover:bg-foreground/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+    >
+      Download résumé
+      <span aria-hidden>↓</span>
+    </a>
+  )
+}
+
 function CtaButton({ label, href }: { label: string; href: string }) {
   const cls =
     'mt-8 inline-flex w-fit items-center rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent'
@@ -99,7 +115,10 @@ function IntroSlide({ slide, index }: { slide: Extract<Slide, { kind: 'intro' }>
               <li key={l}>{l}</li>
             ))}
           </ul>
-          <CtaButton label={slide.cta.label} href={slide.cta.href} />
+          <div className="flex flex-wrap items-center gap-3">
+            <CtaButton label={slide.cta.label} href={slide.cta.href} />
+            <ResumeButton />
+          </div>
         </div>
       )}
     </div>
@@ -237,7 +256,10 @@ function ContactSlide({ slide }: { slide: Extract<Slide, { kind: 'contact' }> })
           </p>
         ))}
       </div>
-      <CtaButton label={slide.cta.label} href={slide.cta.href} />
+      <div className="flex flex-wrap items-center gap-3">
+        <CtaButton label={slide.cta.label} href={slide.cta.href} />
+        <ResumeButton />
+      </div>
     </div>
   )
 }
