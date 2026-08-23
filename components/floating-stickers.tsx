@@ -15,6 +15,7 @@ type Sticker = {
   size: number
   mobileSize?: number
   mobileOnly?: boolean
+  drift?: boolean
   rot: number
   delay: number
   variant?: 'logo' | 'photo' | 'cutout'
@@ -25,13 +26,13 @@ type Sticker = {
 
 const stickers: Sticker[] = [
   {
-    src: '/stickers/headshot.png',
+    src: '/stickers/headshot-circle.png',
     alt: 'Portrait of the candidate',
+    drift: true,
     note: 'That\'s me. Platform engineer, Chicago. I spend my days making sure other engineers never have to think about the platform.',
-    className: 'left-[0%] top-[1%]',
-    size: 236,
-    mobileSize: 112,
-    mobileOnly: true,
+    className: 'left-[9%] top-[6%] md:left-[13%] md:top-[11%]',
+    size: 190,
+    mobileSize: 104,
     rot: -4,
     delay: 0,
     variant: 'cutout',
@@ -210,7 +211,9 @@ export function FloatingStickers() {
               style={
                 {
                   '--rot': `${s.rot}deg`,
-                  animation: `sticker-float ${isPhoto ? 7.5 : 6}s ease-in-out ${s.delay}s infinite`,
+                  animation: s.drift
+                    ? `sticker-drift 22s ease-in-out ${s.delay}s infinite`
+                    : `sticker-float ${isPhoto ? 7.5 : 6}s ease-in-out ${s.delay}s infinite`,
                 } as React.CSSProperties
               }
             >
