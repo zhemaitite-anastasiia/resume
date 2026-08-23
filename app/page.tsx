@@ -3,7 +3,7 @@ import { ResumeDeck } from '@/components/resume-deck'
 
 export default function Page() {
   return (
-    <main className="relative flex min-h-dvh items-end justify-center overflow-hidden px-4 pb-10 pt-12">
+    <main className="relative min-h-dvh overflow-x-clip px-4 pb-24">
       <div aria-hidden className="deck-grid absolute inset-0" />
       <FloatingStickers />
       <ResumeDeck />
