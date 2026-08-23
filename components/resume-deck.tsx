@@ -4,6 +4,27 @@ import { useEffect, useRef, useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { slides, profile } from '@/lib/resume-data'
 import { SlideContent } from '@/components/slide-content'
+import { Sticker, type StickerSpec } from '@/components/sticker'
+
+/**
+ * Stickers anchored to a section rather than the page. Anchoring to the card
+ * column means placement holds at every viewport width — below xl they sit in
+ * the gap under the card, at xl+ they move out into the side margin.
+ */
+const SECTION_STICKERS: Record<number, StickerSpec & { side: 'left' | 'right' }> = {
+  2: { side: 'right', src: '/stickers/laptop.png', alt: 'Laptop', size: 168, smallSize: 92, rot: 13, delay: 1.1,
+       note: 'Where most of it happens. Terraform on one side, a cluster on the other, and Claude Code somewhere in between.' },
+  3: { side: 'left', src: '/stickers/dog.png', alt: 'Dog', size: 138, smallSize: 62, rot: -9, delay: 1.8,
+       note: 'This is my cocker spaniel. She supervises every deploy and has never once approved a Friday release.' },
+  4: { side: 'right', src: '/stickers/plane.png', alt: 'Airplane', size: 158, smallSize: 92, rot: 15, delay: 2.1,
+       note: "I keep a running list of places I haven't flown to yet. It gets longer faster than it gets shorter." },
+  5: { side: 'left', src: '/stickers/cka-badge.png', alt: 'Certified Kubernetes Administrator', size: 140, smallSize: 82, rot: 8, delay: 0.9,
+       note: 'Certified Kubernetes Administrator, May 2026. The one that actually made me read the control plane docs properly.' },
+  6: { side: 'right', src: '/stickers/aws-saa.png', alt: 'AWS Certified Solutions Architect – Associate', size: 142, smallSize: 74, rot: -11, delay: 1.4,
+       note: 'AWS Solutions Architect – Associate, May 2026. Same month as the CKA, which I do not recommend.' },
+  7: { side: 'left', src: '/stickers/cap-point.png', alt: 'Hand pointing at a cap', size: 176, smallSize: 98, rot: -7, delay: 0.3,
+       note: "Action always. It's the thing I fall back on when a problem is big enough that planning starts to feel like avoiding it." },
+}
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
@@ -85,8 +106,8 @@ export function ResumeDeck() {
               ref={(el) => {
                 sectionRefs.current[i] = el
               }}
-              className={`reveal pointer-events-auto mx-auto flex w-full max-w-2xl flex-col justify-center px-1 ${
-                isHero ? 'min-h-[92dvh] pt-[14vh] md:pt-[19vh]' : 'min-h-[62vh] py-16 md:py-10'
+              className={`reveal pointer-events-auto mx-auto flex w-full max-w-2xl flex-col 2xl:max-w-3xl justify-center px-1 ${
+                isHero ? 'min-h-[92dvh] pt-[14vh] md:pt-[19vh] lg:pt-0' : 'min-h-[62vh] py-16 xl:py-10'
               }`}
             >
               <div className="relative">
@@ -117,6 +138,17 @@ export function ResumeDeck() {
                   </div>
                 </article>
               </div>
+
+              {SECTION_STICKERS[i] && (
+                <Sticker
+                  spec={SECTION_STICKERS[i]}
+                  className={
+                    SECTION_STICKERS[i].side === 'left'
+                      ? 'bottom-0 left-[2%] translate-y-1/2 xl:bottom-auto xl:left-[-230px] xl:top-1/2 xl:-translate-y-1/2'
+                      : 'bottom-0 right-[2%] translate-y-1/2 xl:bottom-auto xl:right-[-230px] xl:top-1/2 xl:-translate-y-1/2'
+                  }
+                />
+              )}
 
               {isHero && (
                 <button
