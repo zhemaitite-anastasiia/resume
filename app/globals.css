@@ -161,6 +161,7 @@
   --card: oklch(0.185 0.008 265);
   --card-foreground: oklch(0.96 0.003 240);
   --muted-foreground: oklch(0.66 0.01 260);
+  --brand-navy: #1f3864;
   --accent: oklch(0.78 0.17 230);
   --accent-foreground: oklch(0.18 0.03 240);
   --border: oklch(1 0 0 / 12%);
@@ -190,11 +191,15 @@
   .deck-grid {
     background-color: var(--background);
     background-image:
-      linear-gradient(to right, oklch(1 0 0 / 5%) 1px, transparent 1px),
-      linear-gradient(to bottom, oklch(1 0 0 / 5%) 1px, transparent 1px);
-    background-size: 46px 46px;
-    -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 45%, black 55%, transparent 100%);
-    mask-image: radial-gradient(ellipse 90% 80% at 50% 45%, black 55%, transparent 100%);
+      radial-gradient(ellipse 75% 55% at 50% 0%, color-mix(in srgb, var(--brand-navy) 42%, transparent), transparent 72%),
+      linear-gradient(to right, color-mix(in srgb, var(--brand-navy) 42%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--brand-navy) 42%, transparent) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      46px 46px,
+      46px 46px;
+    -webkit-mask-image: radial-gradient(ellipse 95% 60% at 50% 20%, black 55%, transparent 100%);
+    mask-image: radial-gradient(ellipse 95% 60% at 50% 20%, black 55%, transparent 100%);
   }
 
   .caret::after {
