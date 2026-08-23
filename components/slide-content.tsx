@@ -1,6 +1,7 @@
 'use client'
 
 import type { Slide } from '@/lib/resume-data'
+import { playPop } from '@/components/contact-modal'
 import { useTypewriter } from '@/hooks/use-typewriter'
 
 export function SlideContent({ slide, index }: { slide: Slide; index: number }) {
@@ -23,11 +24,27 @@ export function SlideContent({ slide, index }: { slide: Slide; index: number }) 
 }
 
 function CtaButton({ label, href }: { label: string; href: string }) {
+  const cls =
+    'mt-8 inline-flex w-fit items-center rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent'
+
+  // mailto CTAs open the contact form instead of the visitor's mail client
+  if (href.startsWith('mailto:')) {
+    return (
+      <button
+        type="button"
+        className={cls}
+        onClick={() => {
+          playPop()
+          window.dispatchEvent(new Event('open-contact'))
+        }}
+      >
+        {label}
+      </button>
+    )
+  }
+
   return (
-    <a
-      href={href}
-      className="mt-8 inline-flex w-fit items-center rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-    >
+    <a href={href} className={cls}>
       {label}
     </a>
   )
