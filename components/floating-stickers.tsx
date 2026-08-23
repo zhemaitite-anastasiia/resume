@@ -41,7 +41,7 @@ const stickers: Sticker[] = [
     src: '/stickers/call-me.png',
     alt: 'Call me',
     href: `tel:+1${profile.phone.replace(/\D/g, '')}`,
-    className: 'bottom-[3%] right-[5%] md:bottom-auto md:left-[3%] md:right-auto md:top-[7%]',
+    className: 'bottom-[3%] right-[5%] md:bottom-auto md:left-[4%] md:right-auto md:top-[13%]',
     size: 148,
     mobileSize: 84,
     rot: -13,
