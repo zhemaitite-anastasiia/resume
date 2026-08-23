@@ -30,7 +30,7 @@ const stickers: Sticker[] = [
     alt: 'Portrait of the candidate',
     drift: true,
     note: 'That\'s me. Platform engineer, Chicago. I spend my days making sure other engineers never have to think about the platform.',
-    className: 'left-[9%] top-[6%] md:left-[7%] md:top-[3%]',
+    className: 'left-[4%] top-[4vh] md:left-[7%] md:top-[3%]',
     size: 232,
     mobileSize: 104,
     rot: -4,
@@ -41,7 +41,7 @@ const stickers: Sticker[] = [
     src: '/stickers/call-me.png',
     alt: 'Call me',
     href: `tel:+1${profile.phone.replace(/\D/g, '')}`,
-    className: 'bottom-[3%] right-[5%] md:bottom-auto md:left-[4%] md:right-auto md:top-[13%]',
+    className: 'left-[4%] top-[79vh] md:left-[6%] md:top-[21%]',
     size: 148,
     mobileSize: 84,
     rot: -13,
@@ -52,7 +52,7 @@ const stickers: Sticker[] = [
     src: '/stickers/email-me.png',
     alt: 'Email me',
     action: 'contact',
-    className: 'right-[3%] top-[2%] md:left-auto md:right-[5%] md:top-[5%]',
+    className: 'right-[4%] top-[5vh] md:left-auto md:right-[6%] md:top-[13%]',
     size: 112,
     mobileSize: 66,
     rot: 10,
@@ -63,7 +63,7 @@ const stickers: Sticker[] = [
     src: '/stickers/laptop.png',
     alt: 'Laptop',
     note: 'Where most of it happens. Terraform on one side, a cluster on the other, and Claude Code somewhere in between.',
-    className: 'right-[7%] top-[20%]',
+    className: 'right-[7%] top-[27%]',
     size: 168,
     rot: 13,
     delay: 1.1,
@@ -73,7 +73,7 @@ const stickers: Sticker[] = [
     src: '/stickers/dog.png',
     alt: 'Dog',
     note: 'This is my cocker spaniel. She supervises every deploy and has never once approved a Friday release.',
-    className: 'left-[7%] top-[30%]',
+    className: 'left-[7%] top-[35%]',
     size: 138,
     rot: -9,
     delay: 1.8,
@@ -83,7 +83,7 @@ const stickers: Sticker[] = [
     src: '/stickers/cka-badge.png',
     alt: 'Certified Kubernetes Administrator',
     note: 'Certified Kubernetes Administrator, May 2026. The one that actually made me read the control plane docs properly.',
-    className: 'left-[7%] top-[48%]',
+    className: 'left-[7%] top-[51%]',
     size: 140,
     rot: 8,
     delay: 0.9,
@@ -93,7 +93,7 @@ const stickers: Sticker[] = [
     src: '/stickers/plane.png',
     alt: 'Airplane',
     note: 'I keep a running list of places I haven\'t flown to yet. It gets longer faster than it gets shorter.',
-    className: 'right-[7%] top-[39%]',
+    className: 'right-[7%] top-[43%]',
     size: 158,
     rot: 15,
     delay: 2.1,
@@ -103,7 +103,7 @@ const stickers: Sticker[] = [
     src: '/stickers/linkedin.png',
     alt: 'LinkedIn',
     href: profile.linkedinUrl,
-    className: 'bottom-[3%] left-[5%] md:bottom-auto md:left-[6%] md:top-[66%]',
+    className: 'right-[5%] top-[80vh] md:left-[6%] md:right-auto md:top-[67%]',
     size: 104,
     mobileSize: 54,
     rot: -16,
@@ -114,7 +114,7 @@ const stickers: Sticker[] = [
     src: '/stickers/aws-saa.png',
     alt: 'AWS Certified Solutions Architect – Associate',
     note: 'AWS Solutions Architect – Associate, May 2026. Same month as the CKA, which I do not recommend.',
-    className: 'right-[7%] top-[57%]',
+    className: 'right-[7%] top-[59%]',
     size: 142,
     rot: -11,
     delay: 1.4,
@@ -155,7 +155,7 @@ export function FloatingStickers() {
   }, [openNote])
 
   return (
-    <div ref={layerRef} className="pointer-events-none absolute inset-0 z-0">
+    <div ref={layerRef} className="pointer-events-none absolute inset-0 z-20 md:z-0">
       {stickers.map((s) => {
         const isPhoto = s.variant === 'photo'
         const isCutout = s.variant === 'cutout'
