@@ -60,7 +60,7 @@ function IntroSlide({ slide, index }: { slide: Extract<Slide, { kind: 'intro' }>
       </h1>
       {done && (
         <div className="animate-slide-in">
-          <ul className="mt-6 space-y-1 text-sm text-muted-foreground">
+          <ul className="mt-6 space-y-1 text-[15px] text-foreground/90">
             {slide.lines.map((l) => (
               <li key={l}>{l}</li>
             ))}
@@ -85,7 +85,7 @@ function TextSlide({ slide, index }: { slide: Extract<Slide, { kind: 'text' }>; 
       {done && (
         <div className="mt-4 animate-slide-in space-y-4">
           {slide.lines.slice(1).map((l) => (
-            <p key={l.text} className="text-balance leading-relaxed text-muted-foreground">
+            <p key={l.text} className="text-balance leading-relaxed text-foreground/90">
               {l.text}
             </p>
           ))}
@@ -115,7 +115,7 @@ function RoleSlide({ slide }: { slide: Extract<Slide, { kind: 'role' }> }) {
       <div className="mt-5 space-y-2.5 overflow-y-auto pr-1">
         {slide.lines.map((l) =>
           l.indent ? (
-            <p key={l.text} className="pl-4 text-sm leading-relaxed text-muted-foreground">
+            <p key={l.text} className="pl-4 text-[15px] leading-relaxed text-foreground/90">
               <span className="mr-2 text-accent">→</span>
               {l.text}
             </p>
