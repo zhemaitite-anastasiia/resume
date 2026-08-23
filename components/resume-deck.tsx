@@ -101,11 +101,11 @@ export function ResumeDeck() {
                 )}
                 <div
                   aria-hidden
-                  className="absolute inset-x-3 top-3 -z-10 h-full rounded-3xl border border-border bg-card/60"
+                  className="absolute inset-x-3 top-3 -z-10 h-full rounded-3xl border border-[color-mix(in_srgb,var(--brand-navy)_70%,white_10%)] bg-[color-mix(in_srgb,var(--brand-navy)_45%,var(--card))]"
                 />
                 <div
                   aria-hidden
-                  className="absolute inset-x-6 top-6 -z-20 h-full rounded-3xl border border-border bg-card/30"
+                  className="absolute inset-x-6 top-6 -z-20 h-full rounded-3xl border border-[color-mix(in_srgb,var(--brand-navy)_55%,transparent)] bg-[color-mix(in_srgb,var(--brand-navy)_28%,var(--card))]"
                 />
 
                 <article className="flex flex-col rounded-3xl border border-border bg-card p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] sm:p-8">
