@@ -1,7 +1,6 @@
 import { FloatingStickers } from '@/components/floating-stickers'
 import { ResumeDeck } from '@/components/resume-deck'
 import { ContactModal } from '@/components/contact-modal'
-import { StickerNote } from '@/components/sticker-note'
 
 export default function Page() {
   return (
@@ -10,7 +9,6 @@ export default function Page() {
       <FloatingStickers />
       <ResumeDeck />
       <ContactModal />
-      <StickerNote />
     </main>
   )
 }
