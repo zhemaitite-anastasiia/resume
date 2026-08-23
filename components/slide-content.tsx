@@ -65,7 +65,7 @@ function ResumeButton() {
       href={`${basePath}/Anastasiia_Zhemaitite_Platform_Engineer.pdf`}
       target="_blank"
       rel="noreferrer"
-      className="mt-8 inline-flex w-fit items-center gap-1.5 rounded-full border border-foreground/40 px-5 py-2 text-sm font-semibold text-foreground transition-colors hover:border-foreground hover:bg-foreground/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      className="mt-8 inline-flex w-fit items-center gap-1.5 rounded-full border border-accent/70 bg-accent/10 px-5 py-2 text-sm font-semibold text-accent shadow-[0_0_18px_-2px_var(--accent)] transition-all hover:border-accent hover:bg-accent/20 hover:shadow-[0_0_26px_0px_var(--accent)] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
       Download résumé
       <span aria-hidden>↓</span>
