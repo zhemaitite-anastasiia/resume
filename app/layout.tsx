@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { JetBrains_Mono } from 'next/font/google'
 import './globals.css'
@@ -29,7 +28,6 @@ export default function RootLayout({
     <html lang="en" className={`dark ${jetbrainsMono.variable}`}>
       <body className="antialiased bg-background">
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
