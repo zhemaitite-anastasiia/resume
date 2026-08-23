@@ -161,7 +161,7 @@ export function FloatingStickers() {
   }, [openNote])
 
   return (
-    <div ref={layerRef} className="pointer-events-none absolute inset-0 z-20 md:z-0">
+    <div ref={layerRef} className="pointer-events-none absolute inset-0 z-0">
       {stickers.map((s) => {
         const isPhoto = s.variant === 'photo'
         const isCutout = s.variant === 'cutout'
