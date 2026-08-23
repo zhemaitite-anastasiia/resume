@@ -75,7 +75,7 @@ export function ResumeDeck() {
         ))}
       </nav>
 
-      <div className="relative z-10 w-full">
+      <div className="pointer-events-none relative z-10 w-full">
         {slides.map((slide, i) => {
           const isHero = i === 0
           return (
@@ -85,7 +85,7 @@ export function ResumeDeck() {
               ref={(el) => {
                 sectionRefs.current[i] = el
               }}
-              className={`reveal mx-auto flex w-full max-w-xl flex-col justify-center px-1 ${
+              className={`reveal pointer-events-auto mx-auto flex w-full max-w-xl flex-col justify-center px-1 ${
                 isHero ? 'min-h-[92dvh] pt-[19vh]' : 'min-h-[62vh] py-10'
               }`}
             >
