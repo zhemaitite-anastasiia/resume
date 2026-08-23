@@ -110,7 +110,7 @@ export function ResumeDeck() {
                 isHero ? 'min-h-[92dvh] pt-[14vh] md:pt-[19vh] lg:pt-0' : 'min-h-[62vh] py-16 xl:py-10'
               }`}
             >
-              <div className="relative">
+              <div className="reveal-target relative">
 
                 <div
                   aria-hidden
