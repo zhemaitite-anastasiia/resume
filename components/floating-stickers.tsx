@@ -1,5 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 import { profile } from '@/lib/resume-data'
+import { playPop } from '@/components/contact-modal'
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
@@ -14,6 +17,7 @@ type Sticker = {
   delay: number
   variant?: 'logo' | 'photo' | 'cutout'
   href?: string
+  action?: 'contact'
 }
 
 const stickers: Sticker[] = [
@@ -42,7 +46,7 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/email-me.png',
     alt: 'Email me',
-    href: `mailto:${profile.email}`,
+    action: 'contact',
     className: 'right-[3%] top-[2%] md:left-auto md:right-[5%] md:top-[5%]',
     size: 112,
     mobileSize: 66,
@@ -124,14 +128,25 @@ export function FloatingStickers() {
         const isPhoto = s.variant === 'photo'
         const isCutout = s.variant === 'cutout'
         const vis = s.mobileOnly ? 'md:hidden' : s.mobileSize ? '' : 'hidden md:block'
-        const Frame = s.href ? 'a' : 'div'
-        const frameProps = s.href
+        const interactive = `absolute ${vis} pointer-events-auto cursor-pointer transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${s.className}`
+        const Frame = s.action ? 'button' : s.href ? 'a' : 'div'
+        const frameProps = s.action
+          ? {
+              type: 'button' as const,
+              'aria-label': s.alt,
+              onClick: () => {
+                playPop()
+                window.dispatchEvent(new Event('open-contact'))
+              },
+              className: interactive,
+            }
+          : s.href
           ? {
               href: s.href,
               target: s.href.startsWith('http') ? '_blank' : undefined,
               rel: s.href.startsWith('http') ? 'noreferrer' : undefined,
               'aria-label': s.alt,
-              className: `absolute ${vis} pointer-events-auto cursor-pointer transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${s.className}`,
+              className: interactive,
             }
           : { 'aria-hidden': true, className: `absolute ${vis} ${s.className}` }
         return (
