@@ -85,7 +85,7 @@ export function ResumeDeck() {
               ref={(el) => {
                 sectionRefs.current[i] = el
               }}
-              className={`reveal pointer-events-auto mx-auto flex w-full max-w-xl flex-col justify-center px-1 ${
+              className={`reveal pointer-events-auto mx-auto flex w-full max-w-2xl flex-col justify-center px-1 ${
                 isHero ? 'min-h-[92dvh] pt-[14vh] md:pt-[19vh]' : 'min-h-[62vh] py-16 md:py-10'
               }`}
             >
