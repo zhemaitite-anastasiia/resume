@@ -1,5 +1,6 @@
 import { FloatingStickers } from '@/components/floating-stickers'
 import { ResumeDeck } from '@/components/resume-deck'
+import { ContactModal } from '@/components/contact-modal'
 
 export default function Page() {
   return (
@@ -7,6 +8,7 @@ export default function Page() {
       <div aria-hidden className="deck-grid absolute inset-0" />
       <FloatingStickers />
       <ResumeDeck />
+      <ContactModal />
     </main>
   )
 }
