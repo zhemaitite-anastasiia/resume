@@ -18,12 +18,14 @@ type Sticker = {
   variant?: 'logo' | 'photo' | 'cutout'
   href?: string
   action?: 'contact'
+  note?: string
 }
 
 const stickers: Sticker[] = [
   {
     src: '/stickers/headshot.png',
     alt: 'Portrait of the candidate',
+    note: 'That\'s me. Platform engineer, Chicago. I spend my days making sure other engineers never have to think about the platform.',
     className: 'left-[0%] top-[1%]',
     size: 236,
     mobileSize: 112,
@@ -57,6 +59,7 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/laptop.png',
     alt: 'Laptop',
+    note: 'Where most of it happens. Terraform on one side, a cluster on the other, and Claude Code somewhere in between.',
     className: 'right-[4%] top-[17%]',
     size: 168,
     rot: 13,
@@ -66,6 +69,7 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/dog.png',
     alt: 'Dog',
+    note: 'This is my cocker spaniel. She supervises every deploy and has never once approved a Friday release.',
     className: 'left-[4%] top-[23%]',
     size: 138,
     rot: -9,
@@ -75,6 +79,7 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/cka-badge.png',
     alt: 'Certified Kubernetes Administrator',
+    note: 'Certified Kubernetes Administrator, May 2026. The one that actually made me read the control plane docs properly.',
     className: 'left-[3%] top-[38%]',
     size: 140,
     rot: 8,
@@ -84,6 +89,7 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/plane.png',
     alt: 'Airplane',
+    note: 'I keep a running list of places I haven\'t flown to yet. It gets longer faster than it gets shorter.',
     className: 'right-[4%] top-[45%]',
     size: 158,
     rot: 15,
@@ -104,6 +110,7 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/aws-saa.png',
     alt: 'AWS Certified Solutions Architect – Associate',
+    note: 'AWS Solutions Architect – Associate, May 2026. Same month as the CKA, which I do not recommend.',
     className: 'right-[5%] top-[70%]',
     size: 142,
     rot: -11,
@@ -113,6 +120,7 @@ const stickers: Sticker[] = [
   {
     src: '/stickers/cap-point.png',
     alt: 'Hand pointing at a cap',
+    note: 'Action always. It\'s the thing I fall back on when a problem is big enough that planning starts to feel like avoiding it.',
     className: 'left-[4%] top-[84%]',
     size: 176,
     rot: -7,
@@ -129,7 +137,7 @@ export function FloatingStickers() {
         const isCutout = s.variant === 'cutout'
         const vis = s.mobileOnly ? 'md:hidden' : s.mobileSize ? '' : 'hidden md:block'
         const interactive = `absolute ${vis} pointer-events-auto cursor-pointer transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${s.className}`
-        const Frame = s.action ? 'button' : s.href ? 'a' : 'div'
+        const Frame = s.action || s.note ? 'button' : s.href ? 'a' : 'div'
         const frameProps = s.action
           ? {
               type: 'button' as const,
@@ -137,6 +145,20 @@ export function FloatingStickers() {
               onClick: () => {
                 playPop()
                 window.dispatchEvent(new Event('open-contact'))
+              },
+              className: interactive,
+            }
+          : s.note
+          ? {
+              type: 'button' as const,
+              'aria-label': s.alt,
+              onClick: () => {
+                playPop()
+                window.dispatchEvent(
+                  new CustomEvent('open-note', {
+                    detail: { src: s.src, alt: s.alt, text: s.note },
+                  }),
+                )
               },
               className: interactive,
             }
