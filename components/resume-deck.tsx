@@ -14,17 +14,19 @@ export function ResumeDeck() {
   useEffect(() => {
     const els = sectionRefs.current.filter(Boolean) as HTMLElement[]
 
-    const reveal = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add('is-revealed')
-            reveal.unobserve(e.target)
-          }
-        })
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -12% 0px' },
-    )
+    // Reveal anything at or above the fold. Runs on mount and on scroll, so a
+    // refresh mid-page or a jump via the rail can never leave a section stuck
+    // at opacity 0.
+    const revealPassed = () => {
+      els.forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
+          el.classList.add('is-revealed')
+        }
+      })
+    }
+    revealPassed()
+    window.addEventListener('scroll', revealPassed, { passive: true })
+    window.addEventListener('resize', revealPassed)
 
     const spy = new IntersectionObserver(
       (entries) => {
@@ -38,12 +40,10 @@ export function ResumeDeck() {
       { rootMargin: '-45% 0px -45% 0px' },
     )
 
-    els.forEach((el) => {
-      reveal.observe(el)
-      spy.observe(el)
-    })
+    els.forEach((el) => spy.observe(el))
     return () => {
-      reveal.disconnect()
+      window.removeEventListener('scroll', revealPassed)
+      window.removeEventListener('resize', revealPassed)
       spy.disconnect()
     }
   }, [])
