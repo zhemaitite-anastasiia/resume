@@ -130,7 +130,7 @@ function TextSlide({ slide, index }: { slide: Extract<Slide, { kind: 'text' }>; 
   const { text, done } = useTypewriter(first, index, 12)
   return (
     <div className="flex flex-col">
-      {slide.heading && <p className="mb-5 text-sm text-accent">{slide.heading}</p>}
+      {slide.heading && <p className="mb-5 text-sm text-accent xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]">{slide.heading}</p>}
       <p className="text-balance text-xl leading-relaxed sm:text-2xl xl:text-[clamp(1.6rem,1rem+0.8vw,2.4rem)]">
         <span>{text}</span>
         {!done && <span className="caret" aria-hidden />}
@@ -186,16 +186,16 @@ function RoleSlide({ slide }: { slide: Extract<Slide, { kind: 'role' }> }) {
 function SkillsSlide({ slide }: { slide: Extract<Slide, { kind: 'skills' }> }) {
   return (
     <div className="flex flex-col">
-      <p className="mb-5 text-sm text-accent">{slide.heading}</p>
+      <p className="mb-5 text-sm text-accent xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]">{slide.heading}</p>
       <div className="grid gap-x-6 gap-y-4 overflow-y-auto pr-1 sm:grid-cols-2">
         {slide.groups.map((g) => (
           <div key={g.label}>
-            <p className="mb-1.5 text-xs uppercase tracking-wide text-muted-foreground">{g.label}</p>
+            <p className="mb-1.5 text-xs uppercase tracking-wide text-muted-foreground xl:text-[clamp(0.8rem,0.72rem+0.16vw,0.98rem)]">{g.label}</p>
             <div className="flex flex-wrap gap-1.5">
               {g.items.map((item) => (
                 <span
                   key={item}
-                  className="rounded-md border border-border bg-background/40 px-2 py-0.5 text-xs text-foreground"
+                  className="rounded-md border border-border bg-background/40 px-2.5 py-1 text-xs text-foreground xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]"
                 >
                   {item}
                 </span>
@@ -211,15 +211,15 @@ function SkillsSlide({ slide }: { slide: Extract<Slide, { kind: 'skills' }> }) {
 function EducationSlide({ slide }: { slide: Extract<Slide, { kind: 'education' }> }) {
   return (
     <div className="flex flex-col">
-      <p className="mb-5 text-sm text-accent">{slide.heading}</p>
+      <p className="mb-5 text-sm text-accent xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]">{slide.heading}</p>
       <div className="space-y-6 overflow-y-auto pr-1">
         <div>
-          <p className="mb-2 text-xs uppercase tracking-wide text-muted-foreground">Certifications</p>
+          <p className="mb-2 text-xs uppercase tracking-wide text-muted-foreground xl:text-[clamp(0.8rem,0.72rem+0.16vw,0.98rem)]">Certifications</p>
           <div className="flex flex-wrap gap-1.5">
             {slide.certifications.map((c) => (
               <span
                 key={c}
-                className="rounded-md border border-accent/40 bg-accent/10 px-2 py-0.5 text-xs text-foreground"
+                className="rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 text-xs text-foreground xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]"
               >
                 {c}
               </span>
@@ -227,12 +227,12 @@ function EducationSlide({ slide }: { slide: Extract<Slide, { kind: 'education' }
           </div>
         </div>
         <div>
-          <p className="mb-2 text-xs uppercase tracking-wide text-muted-foreground">Education</p>
+          <p className="mb-2 text-xs uppercase tracking-wide text-muted-foreground xl:text-[clamp(0.8rem,0.72rem+0.16vw,0.98rem)]">Education</p>
           <div className="space-y-3">
             {slide.education.map((e) => (
               <div key={e.degree}>
-                <p className="text-[15px] font-semibold text-foreground">{e.degree}</p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-[15px] font-semibold text-foreground xl:text-[clamp(1.05rem,0.9rem+0.32vw,1.45rem)]">{e.degree}</p>
+                <p className="text-xs text-muted-foreground xl:text-[clamp(0.8rem,0.72rem+0.16vw,0.98rem)]">
                   {e.org} · {e.year}
                 </p>
               </div>
@@ -247,10 +247,10 @@ function EducationSlide({ slide }: { slide: Extract<Slide, { kind: 'education' }
 function ContactSlide({ slide }: { slide: Extract<Slide, { kind: 'contact' }> }) {
   return (
     <div className="flex flex-col">
-      <p className="mb-5 text-sm text-accent">{slide.heading}</p>
+      <p className="mb-5 text-sm text-accent xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]">{slide.heading}</p>
       <div className="space-y-2">
         {slide.lines.map((l) => (
-          <p key={l.text} className="text-sm leading-relaxed">
+          <p key={l.text} className="text-sm leading-relaxed xl:text-[clamp(1.05rem,0.9rem+0.32vw,1.45rem)]">
             <span className="text-muted-foreground">$ </span>
             {l.text}
           </p>
