@@ -30,7 +30,7 @@ const stickers: Sticker[] = [
     alt: 'Portrait of the candidate',
     drift: true,
     note: 'That\'s me. Platform engineer, Chicago. I spend my days making sure other engineers never have to think about the platform.',
-    className: 'left-[4%] top-[4vh] xl:left-[0.5%] xl:top-[3%]',
+    className: 'left-[4%] top-[4vh] xl:left-[0%] xl:top-[3%]',
     size: 190,
     mobileSize: 104,
     rot: -4,
@@ -96,7 +96,7 @@ export function FloatingStickers() {
 
   return (
     <div ref={layerRef} className="pointer-events-none absolute inset-0 z-0">
-      <div className="relative mx-auto h-full w-full max-w-[min(94vw,105rem)]">
+      <div className="relative mx-auto h-full w-full max-w-[min(96vw,124rem)]">
       {stickers.map((s) => {
         const isPhoto = s.variant === 'photo'
         const isCutout = s.variant === 'cutout'
@@ -145,7 +145,7 @@ export function FloatingStickers() {
             style={
               {
                 '--sz': `${s.mobileSize ?? s.size}px`,
-                '--sz-md': `${s.size}px`,
+                '--sz-md': `clamp(${s.size}px, ${((s.size / 1440) * 100).toFixed(2)}vw, ${Math.round(s.size * 1.3)}px)`,
               } as React.CSSProperties
             }
           >
