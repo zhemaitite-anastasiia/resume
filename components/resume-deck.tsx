@@ -22,7 +22,7 @@ const SECTION_STICKERS: Record<number, StickerSpec & { side: 'left' | 'right' }>
        note: 'Certified Kubernetes Administrator, May 2026. The one that actually made me read the control plane docs properly.' },
   6: { side: 'right', src: '/stickers/aws-saa.png', alt: 'AWS Certified Solutions Architect – Associate', size: 142, smallSize: 74, rot: -11, delay: 1.4,
        note: 'AWS Solutions Architect – Associate, May 2026. Same month as the CKA, which I do not recommend.' },
-  7: { side: 'right', src: '/stickers/cap-point.png', alt: 'Hand pointing at a cap', size: 176, smallSize: 98, rot: -7, delay: 0.3,
+  7: { side: 'left', src: '/stickers/cap-point.png', alt: 'Hand pointing at a cap', size: 176, smallSize: 98, rot: -7, delay: 0.3,
        note: "Action always. It's the thing I fall back on when a problem is big enough that planning starts to feel like avoiding it." },
 }
 
