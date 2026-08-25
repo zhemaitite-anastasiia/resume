@@ -66,7 +66,7 @@ function ResumeButton() {
       target="_blank"
       rel="noreferrer"
       style={{ boxShadow: '0 0 20px -2px var(--accent), inset 0 0 12px -6px var(--accent)' }}
-      className="mt-8 inline-flex w-fit items-center gap-1.5 rounded-full border border-accent bg-accent/15 px-5 py-2 text-sm font-semibold text-accent transition-all hover:bg-accent/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:px-7 xl:py-3 xl:text-[clamp(0.95rem,0.8rem+0.28vw,1.3rem)]"
+      className="inline-flex w-fit items-center gap-1.5 rounded-full border border-accent bg-accent/15 px-5 py-2 text-sm font-semibold text-accent transition-all hover:bg-accent/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:px-7 xl:py-3 xl:text-[clamp(0.95rem,0.8rem+0.28vw,1.3rem)]"
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow =
           '0 0 32px 0px var(--accent), inset 0 0 14px -6px var(--accent)'
@@ -84,7 +84,7 @@ function ResumeButton() {
 
 function CtaButton({ label, href }: { label: string; href: string }) {
   const cls =
-    'mt-8 inline-flex w-fit items-center rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:px-7 xl:py-3 xl:text-[clamp(0.95rem,0.8rem+0.28vw,1.3rem)]'
+    'inline-flex w-fit items-center rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:px-7 xl:py-3 xl:text-[clamp(0.95rem,0.8rem+0.28vw,1.3rem)]'
 
   // mailto CTAs open the contact form instead of the visitor's mail client
   if (href.startsWith('mailto:')) {
@@ -124,7 +124,7 @@ function IntroSlide({ slide, index }: { slide: Extract<Slide, { kind: 'intro' }>
               <li key={l}>{l}</li>
             ))}
           </ul>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <CtaButton label={slide.cta.label} href={slide.cta.href} />
             <ResumeButton />
           </div>
@@ -296,7 +296,7 @@ function ContactSlide({ slide }: { slide: Extract<Slide, { kind: 'contact' }> })
           )
         })}
       </div>
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="mt-8 flex flex-wrap items-center gap-3">
         <CtaButton label={slide.cta.label} href={slide.cta.href} />
         <ResumeButton />
       </div>
