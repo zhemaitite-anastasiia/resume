@@ -14,7 +14,7 @@ import { Sticker, type StickerSpec } from '@/components/sticker'
 const SECTION_STICKERS: Record<number, StickerSpec & { side: 'left' | 'right' }> = {
   2: { side: 'right', src: '/stickers/laptop.png', alt: 'Laptop', size: 138, smallSize: 92, rot: 13, delay: 1.1,
        note: 'Where most of it happens. Terraform on one side, a cluster on the other, and Claude Code somewhere in between.' },
-  3: { side: 'left', src: '/stickers/dog.png', alt: 'Dog', size: 116, smallSize: 62, rot: -9, delay: 1.8,
+  3: { side: 'left', src: '/stickers/dog.png', alt: 'Dog', size: 116, smallSize: 52, rot: -9, delay: 1.8,
        note: 'This is my cocker spaniel. She supervises every deploy and has never once approved a Friday release.' },
   4: { side: 'right', src: '/stickers/plane.png', alt: 'Airplane', size: 130, smallSize: 92, rot: 15, delay: 2.1,
        note: "I keep a running list of places I haven't flown to yet. It gets longer faster than it gets shorter." },
@@ -107,7 +107,7 @@ export function ResumeDeck() {
                 sectionRefs.current[i] = el
               }}
               className={`reveal pointer-events-auto relative mx-auto flex w-full max-w-2xl flex-col justify-center px-1 xl:max-w-[clamp(44rem,58vw,108rem)] ${
-                isHero ? 'min-h-[92dvh] pt-[14vh] md:pt-[19vh] lg:pt-[12vh]' : 'min-h-[62vh] py-16 xl:py-10'
+                isHero ? 'min-h-[92dvh] pt-[14vh] md:pt-[19vh] lg:pt-[12vh]' : 'min-h-[62vh] py-20 xl:py-10'
               }`}
             >
               <div className="relative">
@@ -145,8 +145,8 @@ export function ResumeDeck() {
                     spec={SECTION_STICKERS[i]}
                     className={
                       SECTION_STICKERS[i].side === 'left'
-                        ? 'bottom-[-64px] left-[2%] translate-y-1/2 xl:bottom-auto xl:left-auto xl:right-full xl:mr-10 xl:top-1/2 xl:-translate-y-1/2'
-                        : 'bottom-[-64px] right-[2%] translate-y-1/2 xl:bottom-auto xl:right-auto xl:left-full xl:ml-10 xl:top-1/2 xl:-translate-y-1/2'
+                        ? 'bottom-[-64px] left-[2%] translate-y-1/2 xl:bottom-auto xl:left-0 xl:top-1/2 xl:-translate-x-[calc(100%+2.5rem)] xl:-translate-y-1/2'
+                        : 'bottom-[-64px] right-[2%] translate-y-1/2 xl:bottom-auto xl:right-0 xl:top-1/2 xl:translate-x-[calc(100%+2.5rem)] xl:-translate-y-1/2'
                     }
                   />
                 )}
