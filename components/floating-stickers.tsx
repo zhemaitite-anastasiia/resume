@@ -148,8 +148,8 @@ export function FloatingStickers() {
             className={`absolute ${vis} ${s.note ? 'pointer-events-auto' : ''} ${s.className}`}
             style={
               {
-                '--sz': `${s.mobileSize ?? s.size}px`,
-                '--sz-md': `clamp(${s.size}px, ${((s.size / 1050) * 100).toFixed(2)}vw, ${Math.round(s.size * 2.5)}px)`,
+                '--w-sm': `${s.mobileSize ?? s.size}px`,
+                '--w-lg': `clamp(${s.size}px, ${((s.size / 1050) * 100).toFixed(2)}vw, ${Math.round(s.size * 2.5)}px)`,
               } as React.CSSProperties
             }
           >
@@ -179,7 +179,7 @@ export function FloatingStickers() {
                   width={s.size}
                   height={s.size}
                   unoptimized
-                  className={`${isPhoto ? 'block rounded-full object-cover' : ''} h-auto w-[var(--sz)] xl:w-[var(--sz-md)]`}
+                  className={`${isPhoto ? 'block rounded-full object-cover' : ''} sticker-img`}
                 />
               </div>
             </Frame>
