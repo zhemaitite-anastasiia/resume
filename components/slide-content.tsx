@@ -254,16 +254,47 @@ function EducationSlide({ slide }: { slide: Extract<Slide, { kind: 'education' }
 }
 
 function ContactSlide({ slide }: { slide: Extract<Slide, { kind: 'contact' }> }) {
+  // Lines read "label   value"; email, phone and LinkedIn become real links.
+  const linkFor = (label: string, value: string) => {
+    if (label === 'email') return `mailto:${value}`
+    if (label === 'phone') return `tel:+1${value.replace(/[^0-9]/g, '')}`
+    if (label === 'linkedin') return `https://${value.replace(/^https?:[/][/]/, '')}`
+    return null
+  }
+
   return (
     <div className="flex flex-col">
-      <p className="mb-5 text-sm text-accent xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]">{slide.heading}</p>
+      <p className="mb-5 text-sm text-accent xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]">
+        {slide.heading}
+      </p>
       <div className="space-y-2">
-        {slide.lines.map((l) => (
-          <p key={l.text} className="text-sm leading-relaxed xl:text-[clamp(1.05rem,0.9rem+0.32vw,1.45rem)]">
-            <span className="text-muted-foreground">$ </span>
-            {l.text}
-          </p>
-        ))}
+        {slide.lines.map((l) => {
+          const parts = l.text.trim().split(/\s+/)
+          const label = parts[0]
+          const value = parts.slice(1).join(' ')
+          const href = linkFor(label, value)
+          return (
+            <p
+              key={l.text}
+              className="text-sm leading-relaxed xl:text-[clamp(1.05rem,0.9rem+0.32vw,1.45rem)]"
+            >
+              <span className="text-muted-foreground">$ </span>
+              <span className="text-muted-foreground">{label} </span>
+              {href ? (
+                <a
+                  href={href}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noreferrer' : undefined}
+                  className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  {value}
+                </a>
+              ) : (
+                value
+              )}
+            </p>
+          )
+        })}
       </div>
       <div className="flex flex-wrap items-center gap-3">
         <CtaButton label={slide.cta.label} href={slide.cta.href} />
