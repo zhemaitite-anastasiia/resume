@@ -275,3 +275,18 @@
 .chip-glow:hover {
   box-shadow: 0 0 16px -3px var(--accent);
 }
+
+/* Sticker sizing lives here rather than in Tailwind arbitrary classes: an
+   earlier `w-[var(--x)]` silently failed to compile and collapsed every
+   section sticker to zero width. Below xl a sticker sits in the gap between
+   cards and must stay small; above xl it sits beside the card and can scale. */
+.sticker-img {
+  width: var(--w-sm);
+  height: auto;
+}
+
+@media (min-width: 1280px) {
+  .sticker-img {
+    width: var(--w-lg);
+  }
+}
