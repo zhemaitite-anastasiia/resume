@@ -145,7 +145,7 @@ export function FloatingStickers() {
             style={
               {
                 '--sz': `${s.mobileSize ?? s.size}px`,
-                '--sz-md': `clamp(${s.size}px, ${((s.size / 1440) * 100).toFixed(2)}vw, ${Math.round(s.size * 1.3)}px)`,
+                '--sz-md': `clamp(${s.size}px, ${((s.size / 1150) * 100).toFixed(2)}vw, ${Math.round(s.size * 1.45)}px)`,
               } as React.CSSProperties
             }
           >
