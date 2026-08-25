@@ -9,6 +9,10 @@ export default function Page() {
       <FloatingStickers />
       <ResumeDeck />
       <ContactModal />
+
+      <footer className="relative z-10 pb-6 pt-36 text-center text-xs text-muted-foreground">
+        © {new Date().getFullYear()} Anastasiia Zhemaitite
+      </footer>
     </main>
   )
 }
