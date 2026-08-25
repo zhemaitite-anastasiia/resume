@@ -12,17 +12,21 @@ import { Sticker, type StickerSpec } from '@/components/sticker'
  * the gap under the card, at xl+ they move out into the side margin.
  */
 const SECTION_STICKERS: Record<number, StickerSpec & { side: 'left' | 'right' }> = {
-  2: { side: 'right', src: '/stickers/laptop.png', alt: 'Laptop', size: 138, smallSize: 92, rot: 13, delay: 1.1,
+  0: { side: 'left', src: '/stickers/call-me.png', alt: 'Call me', size: 122, smallSize: 84, rot: -13, delay: 1.6,
+       href: `tel:+1${profile.phone.replace(/\D/g, '')}` },
+  1: { side: 'right', src: '/stickers/linkedin.png', alt: 'LinkedIn', size: 88, smallSize: 54, rot: -16, delay: 2.4,
+       href: profile.linkedinUrl },
+  2: { side: 'left', src: '/stickers/laptop.png', alt: 'Laptop', size: 138, smallSize: 92, rot: 13, delay: 1.1,
        note: 'Where most of it happens. Terraform on one side, a cluster on the other, and Claude Code somewhere in between.' },
-  3: { side: 'left', src: '/stickers/dog.png', alt: 'Dog', size: 116, smallSize: 52, rot: -9, delay: 1.8,
+  3: { side: 'right', src: '/stickers/dog.png', alt: 'Dog', size: 116, smallSize: 52, rot: -9, delay: 1.8,
        note: 'This is my cocker spaniel. She supervises every deploy and has never once approved a Friday release.' },
-  4: { side: 'right', src: '/stickers/plane.png', alt: 'Airplane', size: 130, smallSize: 92, rot: 15, delay: 2.1,
+  4: { side: 'left', src: '/stickers/plane.png', alt: 'Airplane', size: 130, smallSize: 92, rot: 15, delay: 2.1,
        note: "I keep a running list of places I haven't flown to yet. It gets longer faster than it gets shorter." },
-  5: { side: 'left', src: '/stickers/cka-badge.png', alt: 'Certified Kubernetes Administrator', size: 118, smallSize: 82, rot: 8, delay: 0.9,
+  5: { side: 'right', src: '/stickers/cka-badge.png', alt: 'Certified Kubernetes Administrator', size: 118, smallSize: 82, rot: 8, delay: 0.9,
        note: 'Certified Kubernetes Administrator, May 2026. The one that actually made me read the control plane docs properly.' },
-  6: { side: 'right', src: '/stickers/aws-saa.png', alt: 'AWS Certified Solutions Architect – Associate', size: 118, smallSize: 74, rot: -11, delay: 1.4,
+  6: { side: 'left', src: '/stickers/aws-saa.png', alt: 'AWS Certified Solutions Architect – Associate', size: 118, smallSize: 74, rot: -11, delay: 1.4,
        note: 'AWS Solutions Architect – Associate, May 2026. Same month as the CKA, which I do not recommend.' },
-  7: { side: 'left', src: '/stickers/cap-point.png', alt: 'Hand pointing at a cap', size: 144, smallSize: 98, rot: -7, delay: 0.3,
+  7: { side: 'right', src: '/stickers/cap-point.png', alt: 'Hand pointing at a cap', size: 144, smallSize: 98, rot: -7, delay: 0.3,
        note: "Action always. It's the thing I fall back on when a problem is big enough that planning starts to feel like avoiding it." },
 }
 
