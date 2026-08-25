@@ -106,7 +106,7 @@ export function ResumeDeck() {
               ref={(el) => {
                 sectionRefs.current[i] = el
               }}
-              className={`reveal pointer-events-auto relative mx-auto flex w-full max-w-2xl flex-col justify-center px-1 xl:max-w-[clamp(44rem,60vw,82rem)] ${
+              className={`reveal pointer-events-auto relative mx-auto flex w-full max-w-2xl flex-col justify-center px-1 xl:max-w-[clamp(44rem,58vw,108rem)] ${
                 isHero ? 'min-h-[92dvh] pt-[14vh] md:pt-[19vh] lg:pt-[12vh]' : 'min-h-[62vh] py-16 xl:py-10'
               }`}
             >
@@ -145,8 +145,8 @@ export function ResumeDeck() {
                     spec={SECTION_STICKERS[i]}
                     className={
                       SECTION_STICKERS[i].side === 'left'
-                        ? 'bottom-[-64px] left-[2%] translate-y-1/2 xl:bottom-auto xl:left-[-230px] xl:top-1/2 xl:-translate-y-1/2'
-                        : 'bottom-[-64px] right-[2%] translate-y-1/2 xl:bottom-auto xl:right-[-230px] xl:top-1/2 xl:-translate-y-1/2'
+                        ? 'bottom-[-64px] left-[2%] translate-y-1/2 xl:bottom-auto xl:left-auto xl:right-full xl:mr-10 xl:top-1/2 xl:-translate-y-1/2'
+                        : 'bottom-[-64px] right-[2%] translate-y-1/2 xl:bottom-auto xl:right-auto xl:left-full xl:ml-10 xl:top-1/2 xl:-translate-y-1/2'
                     }
                   />
                 )}
