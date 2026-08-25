@@ -204,7 +204,7 @@ function SkillsSlide({ slide }: { slide: Extract<Slide, { kind: 'skills' }> }) {
               {g.items.map((item) => (
                 <span
                   key={item}
-                  className="rounded-md border border-border bg-background/40 px-2.5 py-1 text-xs text-foreground xl:text-[clamp(1.05rem,0.9rem+0.3vw,1.45rem)]"
+                  className="cursor-default rounded-md border border-border bg-background/40 px-2.5 py-1 text-xs text-foreground transition-all duration-200 hover:border-accent hover:bg-accent/20 hover:text-accent chip-glow xl:text-[clamp(1.05rem,0.9rem+0.3vw,1.45rem)]"
                 >
                   {item}
                 </span>
@@ -228,7 +228,7 @@ function EducationSlide({ slide }: { slide: Extract<Slide, { kind: 'education' }
             {slide.certifications.map((c) => (
               <span
                 key={c}
-                className="rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 text-xs text-foreground xl:text-[clamp(1.05rem,0.9rem+0.3vw,1.45rem)]"
+                className="cursor-default rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 text-xs text-foreground transition-all duration-200 hover:border-accent hover:bg-accent/20 hover:text-accent chip-glow xl:text-[clamp(1.05rem,0.9rem+0.3vw,1.45rem)]"
               >
                 {c}
               </span>
