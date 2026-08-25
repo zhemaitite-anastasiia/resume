@@ -161,17 +161,17 @@ function RoleSlide({ slide }: { slide: Extract<Slide, { kind: 'role' }> }) {
   return (
     <div className="flex flex-col">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <h2 className="text-2xl font-bold">{slide.company}</h2>
-        <span className="text-xs text-muted-foreground">{slide.companyLocation}</span>
+        <h2 className="text-2xl font-bold xl:text-[clamp(2rem,1.2rem+1.1vw,3.4rem)]">{slide.company}</h2>
+        <span className="text-xs text-muted-foreground xl:text-[clamp(0.95rem,0.85rem+0.26vw,1.35rem)]">{slide.companyLocation}</span>
       </div>
       <div className="mt-1 space-y-0.5">
         {slide.titles.map((t) => (
-          <p key={t.title} className="text-sm text-accent">
+          <p key={t.title} className="text-sm text-accent xl:text-[clamp(1.15rem,0.95rem+0.4vw,1.75rem)]">
             {t.title}
             {t.range && <span className="ml-2 text-muted-foreground">· {t.range}</span>}
           </p>
         ))}
-        <p className="pt-1 text-xs text-muted-foreground">{slide.period}</p>
+        <p className="pt-1 text-xs text-muted-foreground xl:text-[clamp(0.95rem,0.85rem+0.26vw,1.35rem)]">{slide.period}</p>
       </div>
 
       <div className="mt-5 space-y-2.5 overflow-y-auto pr-1">
@@ -182,7 +182,7 @@ function RoleSlide({ slide }: { slide: Extract<Slide, { kind: 'role' }> }) {
               {hl(l.text)}
             </p>
           ) : (
-            <p key={l.text} className="text-[15px] font-semibold text-foreground">
+            <p key={l.text} className="text-[15px] font-semibold text-foreground xl:text-[clamp(1.1rem,0.9rem+0.38vw,1.6rem)]">
               {l.text}
             </p>
           ),
