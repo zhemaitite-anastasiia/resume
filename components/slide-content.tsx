@@ -113,18 +113,13 @@ function IntroSlide({ slide, index }: { slide: Extract<Slide, { kind: 'intro' }>
   const { text, done } = useTypewriter(slide.title, index, 22)
   return (
     <div className="flex flex-col">
-      <img
-        src={`${basePath}/stickers/headshot-circle.png`}
-        alt="Anastasiia Zhemaitite"
-        className="mb-6 w-24 shrink-0 drop-shadow-[0_10px_24px_rgba(0,0,0,0.6)] sm:w-28 xl:w-[clamp(7rem,4rem+3vw,11rem)]"
-      />
-      <h1 className="text-balance text-3xl leading-tight sm:text-4xl xl:text-[clamp(2.4rem,1.4rem+1.6vw,4rem)]">
+      <h1 className="text-balance text-2xl leading-relaxed sm:text-3xl">
         <span>{text}</span>
         {!done && <span className="caret" aria-hidden />}
       </h1>
       {done && (
         <div className="animate-slide-in">
-          <ul className="mt-8 space-y-2 text-base text-foreground/90 xl:text-[clamp(1.15rem,0.95rem+0.4vw,1.7rem)]">
+          <ul className="mt-6 space-y-1.5 text-base text-foreground/90 xl:text-[clamp(1.05rem,0.9rem+0.32vw,1.45rem)]">
             {slide.lines.map((l) => (
               <li key={l}>{l}</li>
             ))}
