@@ -102,9 +102,9 @@ export const slides: Slide[] = [
         indent: true,
         muted: true,
       },
-      { text: 'Traffic Management' },
+      { text: 'Observability & Reliability' },
       {
-        text: 'Deployed the Kubernetes Gateway API on EKS to separate network management from app routing, letting developers safely update their own routes.',
+        text: 'Replaced static CPU/memory alerts with Datadog APM, Prometheus, and Grafana SLO dashboards, paging only on real latency and error issues — cutting alert noise from ~35 to ~4 actionable pages a week.',
         indent: true,
         muted: true,
       },
@@ -123,9 +123,9 @@ export const slides: Slide[] = [
         indent: true,
         muted: true,
       },
-      { text: 'Observability & Reliability' },
+      { text: 'Traffic Management' },
       {
-        text: 'Replaced static CPU/memory alerts with Datadog APM, Prometheus, and Grafana SLO dashboards, paging only on real latency and error issues — cutting alert noise from ~35 to ~4 actionable pages a week.',
+        text: 'Deployed the Kubernetes Gateway API on EKS to separate network management from app routing, letting developers safely update their own routes.',
         indent: true,
         muted: true,
       },
