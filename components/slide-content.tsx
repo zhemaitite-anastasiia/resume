@@ -113,7 +113,7 @@ function IntroSlide({ slide, index }: { slide: Extract<Slide, { kind: 'intro' }>
   const { text, done } = useTypewriter(slide.title, index, 22)
   return (
     <div className="flex flex-col">
-      <h1 className="text-balance text-2xl leading-relaxed sm:text-3xl">
+      <h1 className="text-balance text-2xl leading-relaxed sm:text-3xl xl:text-[clamp(1.9rem,1.1rem+1.15vw,3.2rem)]">
         <span>{text}</span>
         {!done && <span className="caret" aria-hidden />}
       </h1>
