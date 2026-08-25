@@ -87,7 +87,7 @@ export function Sticker({ spec, className = '' }: { spec: StickerSpec; className
       style={
         {
           '--sz': `${spec.smallSize ?? spec.size}px`,
-          '--sz-lg': `${spec.size}px`,
+          '--sz-lg': `clamp(${spec.size}px, ${((spec.size / 1440) * 100).toFixed(2)}vw, ${Math.round(spec.size * 1.3)}px)`,
         } as React.CSSProperties
       }
     >
