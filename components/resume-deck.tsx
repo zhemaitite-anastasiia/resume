@@ -107,7 +107,7 @@ export function ResumeDeck() {
                 sectionRefs.current[i] = el
               }}
               className={`reveal pointer-events-auto relative mx-auto flex w-full max-w-2xl flex-col justify-center px-1 2xl:max-w-3xl ${
-                isHero ? 'min-h-[92dvh] pt-[14vh] md:pt-[19vh] lg:pt-0' : 'min-h-[62vh] py-16 xl:py-10'
+                isHero ? 'min-h-[92dvh] pt-[14vh] md:pt-[19vh] lg:pt-[12vh]' : 'min-h-[62vh] py-16 xl:py-10'
               }`}
             >
               <div className="relative">
