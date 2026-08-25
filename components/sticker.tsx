@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { useTypewriter } from '@/hooks/use-typewriter'
 import { playPop } from '@/components/contact-modal'
+import { NoteBubble } from '@/components/note-bubble'
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
@@ -114,22 +114,7 @@ export function Sticker({ spec, className = '' }: { spec: StickerSpec; className
         </div>
       </Frame>
 
-      {spec.note && open && <NoteBubble text={spec.note} />}
-    </div>
-  )
-}
-
-function NoteBubble({ text }: { text: string }) {
-  const { text: typed, done } = useTypewriter(text, text, 15)
-  return (
-    <div className="animate-slide-in pointer-events-auto absolute left-1/2 top-[calc(100%+14px)] z-30 w-[248px] -translate-x-1/2">
-      <div
-        aria-hidden
-        className="absolute -top-[7px] left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-foreground/70 bg-card"
-      />
-      <div className="relative rounded-xl border border-foreground/70 bg-card px-4 py-3 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.9)]">
-        <p className={`text-[13px] leading-relaxed text-foreground ${done ? '' : 'caret'}`}>{typed}</p>
-      </div>
+      {spec.note && open && <NoteBubble text={spec.note} anchor={rootRef} />}
     </div>
   )
 }
