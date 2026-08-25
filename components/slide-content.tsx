@@ -113,13 +113,13 @@ function IntroSlide({ slide, index }: { slide: Extract<Slide, { kind: 'intro' }>
   const { text, done } = useTypewriter(slide.title, index, 22)
   return (
     <div className="flex flex-col">
-      <h1 className="text-balance text-2xl leading-relaxed sm:text-3xl xl:text-[clamp(1.9rem,1.1rem+1.15vw,3.2rem)]">
+      <h1 className="text-balance text-2xl leading-relaxed sm:text-3xl xl:text-[clamp(2.2rem,1.2rem+1.5vw,4rem)]">
         <span>{text}</span>
         {!done && <span className="caret" aria-hidden />}
       </h1>
       {done && (
         <div className="animate-slide-in">
-          <ul className="mt-6 space-y-1.5 text-base text-foreground/90 xl:text-[clamp(1.05rem,0.9rem+0.32vw,1.45rem)]">
+          <ul className="mt-6 space-y-1.5 text-base text-foreground/90 xl:text-[clamp(1.15rem,0.95rem+0.42vw,1.75rem)]">
             {slide.lines.map((l) => (
               <li key={l}>{l}</li>
             ))}
@@ -139,7 +139,7 @@ function TextSlide({ slide, index }: { slide: Extract<Slide, { kind: 'text' }>; 
   const { text, done } = useTypewriter(first, index, 12)
   return (
     <div className="flex flex-col">
-      {slide.heading && <p className="mb-5 text-sm text-accent xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]">{slide.heading}</p>}
+      {slide.heading && <p className="mb-5 text-sm text-accent xl:text-[clamp(1.05rem,0.9rem+0.3vw,1.45rem)]">{slide.heading}</p>}
       <p className="text-balance text-xl leading-relaxed sm:text-2xl xl:text-[clamp(1.6rem,1rem+0.8vw,2.4rem)]">
         <span>{text}</span>
         {!done && <span className="caret" aria-hidden />}
@@ -147,7 +147,7 @@ function TextSlide({ slide, index }: { slide: Extract<Slide, { kind: 'text' }>; 
       {done && (
         <div className="mt-4 animate-slide-in space-y-4">
           {slide.lines.slice(1).map((l) => (
-            <p key={l.text} className="text-balance text-base leading-relaxed text-foreground/90 xl:text-[clamp(1.05rem,0.9rem+0.32vw,1.45rem)]">
+            <p key={l.text} className="text-balance text-base leading-relaxed text-foreground/90 xl:text-[clamp(1.15rem,0.95rem+0.42vw,1.75rem)]">
               {hl(l.text)}
             </p>
           ))}
@@ -177,7 +177,7 @@ function RoleSlide({ slide }: { slide: Extract<Slide, { kind: 'role' }> }) {
       <div className="mt-5 space-y-2.5 overflow-y-auto pr-1">
         {slide.lines.map((l) =>
           l.indent ? (
-            <p key={l.text} className="pl-4 text-base leading-relaxed text-foreground/90 xl:text-[clamp(1.05rem,0.9rem+0.32vw,1.45rem)]">
+            <p key={l.text} className="pl-4 text-base leading-relaxed text-foreground/90 xl:text-[clamp(1.15rem,0.95rem+0.42vw,1.75rem)]">
               <span className="mr-2 text-accent">→</span>
               {hl(l.text)}
             </p>
@@ -195,16 +195,16 @@ function RoleSlide({ slide }: { slide: Extract<Slide, { kind: 'role' }> }) {
 function SkillsSlide({ slide }: { slide: Extract<Slide, { kind: 'skills' }> }) {
   return (
     <div className="flex flex-col">
-      <p className="mb-5 text-sm text-accent xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]">{slide.heading}</p>
+      <p className="mb-5 text-sm text-accent xl:text-[clamp(1.05rem,0.9rem+0.3vw,1.45rem)]">{slide.heading}</p>
       <div className="grid gap-x-6 gap-y-4 overflow-y-auto pr-1 sm:grid-cols-2">
         {slide.groups.map((g) => (
           <div key={g.label}>
-            <p className="mb-1.5 text-xs uppercase tracking-wide text-muted-foreground xl:text-[clamp(0.8rem,0.72rem+0.16vw,0.98rem)]">{g.label}</p>
+            <p className="mb-1.5 text-xs uppercase tracking-wide text-muted-foreground xl:text-[clamp(0.88rem,0.78rem+0.2vw,1.15rem)]">{g.label}</p>
             <div className="flex flex-wrap gap-1.5">
               {g.items.map((item) => (
                 <span
                   key={item}
-                  className="rounded-md border border-border bg-background/40 px-2.5 py-1 text-xs text-foreground xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]"
+                  className="rounded-md border border-border bg-background/40 px-2.5 py-1 text-xs text-foreground xl:text-[clamp(1.05rem,0.9rem+0.3vw,1.45rem)]"
                 >
                   {item}
                 </span>
@@ -220,15 +220,15 @@ function SkillsSlide({ slide }: { slide: Extract<Slide, { kind: 'skills' }> }) {
 function EducationSlide({ slide }: { slide: Extract<Slide, { kind: 'education' }> }) {
   return (
     <div className="flex flex-col">
-      <p className="mb-5 text-sm text-accent xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]">{slide.heading}</p>
+      <p className="mb-5 text-sm text-accent xl:text-[clamp(1.05rem,0.9rem+0.3vw,1.45rem)]">{slide.heading}</p>
       <div className="space-y-6 overflow-y-auto pr-1">
         <div>
-          <p className="mb-2 text-xs uppercase tracking-wide text-muted-foreground xl:text-[clamp(0.8rem,0.72rem+0.16vw,0.98rem)]">Certifications</p>
+          <p className="mb-2 text-xs uppercase tracking-wide text-muted-foreground xl:text-[clamp(0.88rem,0.78rem+0.2vw,1.15rem)]">Certifications</p>
           <div className="flex flex-wrap gap-1.5">
             {slide.certifications.map((c) => (
               <span
                 key={c}
-                className="rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 text-xs text-foreground xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]"
+                className="rounded-md border border-accent/40 bg-accent/10 px-2.5 py-1 text-xs text-foreground xl:text-[clamp(1.05rem,0.9rem+0.3vw,1.45rem)]"
               >
                 {c}
               </span>
@@ -236,12 +236,12 @@ function EducationSlide({ slide }: { slide: Extract<Slide, { kind: 'education' }
           </div>
         </div>
         <div>
-          <p className="mb-2 text-xs uppercase tracking-wide text-muted-foreground xl:text-[clamp(0.8rem,0.72rem+0.16vw,0.98rem)]">Education</p>
+          <p className="mb-2 text-xs uppercase tracking-wide text-muted-foreground xl:text-[clamp(0.88rem,0.78rem+0.2vw,1.15rem)]">Education</p>
           <div className="space-y-3">
             {slide.education.map((e) => (
               <div key={e.degree}>
-                <p className="text-[15px] font-semibold text-foreground xl:text-[clamp(1.05rem,0.9rem+0.32vw,1.45rem)]">{e.degree}</p>
-                <p className="text-xs text-muted-foreground xl:text-[clamp(0.8rem,0.72rem+0.16vw,0.98rem)]">
+                <p className="text-[15px] font-semibold text-foreground xl:text-[clamp(1.15rem,0.95rem+0.42vw,1.75rem)]">{e.degree}</p>
+                <p className="text-xs text-muted-foreground xl:text-[clamp(0.88rem,0.78rem+0.2vw,1.15rem)]">
                   {e.org} · {e.year}
                 </p>
               </div>
@@ -264,7 +264,7 @@ function ContactSlide({ slide }: { slide: Extract<Slide, { kind: 'contact' }> })
 
   return (
     <div className="flex flex-col">
-      <p className="mb-5 text-sm text-accent xl:text-[clamp(0.95rem,0.85rem+0.22vw,1.2rem)]">
+      <p className="mb-5 text-sm text-accent xl:text-[clamp(1.05rem,0.9rem+0.3vw,1.45rem)]">
         {slide.heading}
       </p>
       <div className="space-y-2">
@@ -276,7 +276,7 @@ function ContactSlide({ slide }: { slide: Extract<Slide, { kind: 'contact' }> })
           return (
             <p
               key={l.text}
-              className="text-sm leading-relaxed xl:text-[clamp(1.05rem,0.9rem+0.32vw,1.45rem)]"
+              className="text-sm leading-relaxed xl:text-[clamp(1.15rem,0.95rem+0.42vw,1.75rem)]"
             >
               <span className="text-muted-foreground">$ </span>
               <span className="text-muted-foreground">{label} </span>
