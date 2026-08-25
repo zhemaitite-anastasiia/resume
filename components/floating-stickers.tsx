@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { profile } from '@/lib/resume-data'
 import { useEffect, useRef, useState } from 'react'
 import { playPop } from '@/components/contact-modal'
-import { useTypewriter } from '@/hooks/use-typewriter'
+import { NoteBubble } from '@/components/note-bubble'
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
@@ -75,6 +75,7 @@ const stickers: Sticker[] = [
 export function FloatingStickers() {
   const [openNote, setOpenNote] = useState<string | null>(null)
   const layerRef = useRef<HTMLDivElement>(null)
+  const noteRefs = useRef<Record<string, HTMLDivElement | null>>({})
 
   // click anywhere else, or press Escape, to dismiss
   useEffect(() => {
@@ -138,6 +139,9 @@ export function FloatingStickers() {
         return (
           <div
             key={s.alt}
+            ref={(el) => {
+              noteRefs.current[s.alt] = el
+            }}
             data-note-root={s.note ? '' : undefined}
             onMouseEnter={s.note ? () => setOpenNote(s.alt) : undefined}
             onMouseLeave={s.note ? () => setOpenNote((cur) => (cur === s.alt ? null : cur)) : undefined}
@@ -180,27 +184,12 @@ export function FloatingStickers() {
               </div>
             </Frame>
 
-            {s.note && openNote === s.alt && <NoteBubble text={s.note} />}
+            {s.note && openNote === s.alt && (
+              <NoteBubble text={s.note} anchor={{ current: noteRefs.current[s.alt] ?? null }} />
+            )}
           </div>
         )
       })}
-      </div>
-    </div>
-  )
-}
-
-function NoteBubble({ text }: { text: string }) {
-  const { text: typed, done } = useTypewriter(text, text, 15)
-  return (
-    <div className="pointer-events-auto absolute left-1/2 top-[calc(100%+14px)] z-30 w-[248px] -translate-x-1/2 animate-slide-in">
-      <div
-        aria-hidden
-        className="absolute -top-[7px] left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-foreground/70 bg-card"
-      />
-      <div className="relative rounded-xl border border-foreground/70 bg-card px-4 py-3 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.9)]">
-        <p className={`text-[13px] leading-relaxed text-foreground ${done ? '' : 'caret'}`}>
-          {typed}
-        </p>
       </div>
     </div>
   )
