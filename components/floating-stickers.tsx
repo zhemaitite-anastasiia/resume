@@ -63,7 +63,7 @@ const stickers: Sticker[] = [
     src: '/stickers/linkedin.png',
     alt: 'LinkedIn',
     href: profile.linkedinUrl,
-    className: 'right-[5%] top-[85vh] xl:left-auto xl:right-[6%] xl:top-[95%]',
+    className: 'right-[5%] top-[85vh] xl:bottom-[150px] xl:left-auto xl:right-[6%] xl:top-auto',
     size: 104,
     mobileSize: 54,
     rot: -16,
