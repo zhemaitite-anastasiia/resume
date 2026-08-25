@@ -220,10 +220,10 @@
 
   @keyframes sticker-drift {
     0%   { transform: translate(0, 0) rotate(var(--rot)); }
-    20%  { transform: translate(34px, -22px) rotate(calc(var(--rot) + 4deg)); }
-    40%  { transform: translate(14px, -44px) rotate(calc(var(--rot) - 2deg)); }
-    60%  { transform: translate(-26px, -28px) rotate(calc(var(--rot) + 3deg)); }
-    80%  { transform: translate(-14px, 12px) rotate(calc(var(--rot) - 4deg)); }
+    20%  { transform: translate(16px, -12px) rotate(calc(var(--rot) + 4deg)); }
+    40%  { transform: translate(7px, -22px) rotate(calc(var(--rot) - 2deg)); }
+    60%  { transform: translate(-13px, -15px) rotate(calc(var(--rot) + 3deg)); }
+    80%  { transform: translate(-7px, 7px) rotate(calc(var(--rot) - 4deg)); }
     100% { transform: translate(0, 0) rotate(var(--rot)); }
   }
 
