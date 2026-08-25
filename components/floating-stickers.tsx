@@ -26,10 +26,22 @@ type Sticker = {
 
 const stickers: Sticker[] = [
   {
+    src: '/stickers/headshot-circle.png',
+    alt: 'Portrait of the candidate',
+    drift: true,
+    note: 'That\'s me. Platform engineer, Chicago. I spend my days making sure other engineers never have to think about the platform.',
+    className: 'left-[4%] top-[4vh] xl:left-[0.5%] xl:top-[3%]',
+    size: 190,
+    mobileSize: 104,
+    rot: -4,
+    delay: 0,
+    variant: 'cutout',
+  },
+  {
     src: '/stickers/call-me.png',
     alt: 'Call me',
     href: `tel:+1${profile.phone.replace(/\D/g, '')}`,
-    className: 'left-[4%] top-[3vh] xl:left-[6%] xl:top-[21.8%]',
+    className: 'left-[4%] top-[84vh] xl:left-[6%] xl:top-[21.8%]',
     size: 122,
     mobileSize: 84,
     rot: -13,
@@ -51,7 +63,7 @@ const stickers: Sticker[] = [
     src: '/stickers/linkedin.png',
     alt: 'LinkedIn',
     href: profile.linkedinUrl,
-    className: 'right-[5%] top-[12%] md:top-[12.9%] xl:bottom-[95px] xl:left-auto xl:right-[6%] xl:top-auto',
+    className: 'right-[5%] top-[85vh] xl:bottom-[95px] xl:left-auto xl:right-[6%] xl:top-auto',
     size: 88,
     mobileSize: 54,
     rot: -16,
