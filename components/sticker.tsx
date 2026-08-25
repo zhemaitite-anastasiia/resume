@@ -86,8 +86,10 @@ export function Sticker({ spec, className = '' }: { spec: StickerSpec; className
       className={`absolute ${spec.note ? 'pointer-events-auto' : ''} ${className}`}
       style={
         {
-          '--sz': `${spec.smallSize ?? spec.size}px`,
-          '--sz-lg': `clamp(${spec.size}px, ${((spec.size / 1050) * 100).toFixed(2)}vw, ${Math.round(spec.size * 2.5)}px)`,
+          // one fluid width for every breakpoint — no CSS-var indirection,
+          // which Tailwind silently failed to compile into a class
+          '--w-sm': `${spec.smallSize ?? spec.size}px`,
+          '--w-lg': `clamp(${spec.size}px, ${((spec.size / 1050) * 100).toFixed(2)}vw, ${Math.round(spec.size * 2.5)}px)`,
         } as React.CSSProperties
       }
     >
@@ -109,7 +111,7 @@ export function Sticker({ spec, className = '' }: { spec: StickerSpec; className
             width={spec.size}
             height={spec.size}
             unoptimized
-            className="h-auto w-[var(--sz)] xl:w-[var(--sz-lg)]"
+            className="sticker-img"
           />
         </div>
       </Frame>
