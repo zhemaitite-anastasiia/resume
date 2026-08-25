@@ -97,7 +97,7 @@ export function FloatingStickers() {
 
   return (
     <div ref={layerRef} className="pointer-events-none absolute inset-0 z-0">
-      <div className="relative mx-auto h-full w-full max-w-[min(96vw,124rem)]">
+      <div className="relative mx-auto h-full w-full max-w-[96vw]">
       {stickers.map((s) => {
         const isPhoto = s.variant === 'photo'
         const isCutout = s.variant === 'cutout'
@@ -149,7 +149,7 @@ export function FloatingStickers() {
             style={
               {
                 '--sz': `${s.mobileSize ?? s.size}px`,
-                '--sz-md': `clamp(${s.size}px, ${((s.size / 1150) * 100).toFixed(2)}vw, ${Math.round(s.size * 1.45)}px)`,
+                '--sz-md': `clamp(${s.size}px, ${((s.size / 1050) * 100).toFixed(2)}vw, ${Math.round(s.size * 2.5)}px)`,
               } as React.CSSProperties
             }
           >
