@@ -261,3 +261,17 @@
     transition: none;
   }
 }
+
+/* Tailwind's arbitrary box-shadow doesn't resolve var(--accent), so the chip
+   hover glow is plain CSS. */
+.chip-glow {
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.chip-glow:hover {
+  box-shadow: 0 0 16px -3px var(--accent);
+}
