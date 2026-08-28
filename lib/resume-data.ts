@@ -98,7 +98,7 @@ export const slides: Slide[] = [
       },
       { text: 'Networking & Migration' },
       {
-        text: 'Led the EKS migration to IPv6-only clusters to remove IPv4 address limits, using a DNS64/NAT64 path to keep IPv4-only registries and GitHub working with zero application changes.',
+        text: 'Led the EKS migration to IPv6-only clusters, removing subnet-size limits on pod density and eliminating per-address IPv4 charges — a DNS64/NAT64 path kept IPv4-only registries and GitHub working with zero application changes.',
         indent: true,
         muted: true,
       },
