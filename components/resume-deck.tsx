@@ -12,8 +12,6 @@ import { Sticker, type StickerSpec } from '@/components/sticker'
  * the gap under the card, at xl+ they move out into the side margin.
  */
 const SECTION_STICKERS: Record<number, StickerSpec & { side: 'left' | 'right' }> = {
-  0: { side: 'left', src: '/stickers/call-me.png', alt: 'Call me', size: 122, smallSize: 84, rot: -13, delay: 1.6,
-       href: `tel:+1${profile.phone.replace(/\D/g, '')}` },
   1: { side: 'right', src: '/stickers/linkedin.png', alt: 'LinkedIn', size: 88, smallSize: 54, rot: -16, delay: 2.4,
        href: profile.linkedinUrl },
   2: { side: 'left', src: '/stickers/laptop.png', alt: 'Laptop', size: 138, smallSize: 92, rot: 13, delay: 1.1,
