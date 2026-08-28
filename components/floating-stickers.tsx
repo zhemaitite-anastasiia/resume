@@ -37,17 +37,6 @@ const stickers: Sticker[] = [
     delay: 0,
     variant: 'cutout',
   },
-  {
-    src: '/stickers/email-me.png',
-    alt: 'Email me',
-    action: 'contact',
-    className: 'right-[4%] top-[4dvh] xl:left-auto xl:right-[6%] xl:top-[13%]',
-    size: 94,
-    mobileSize: 66,
-    rot: 10,
-    delay: 0.6,
-    variant: 'cutout',
-  },
 ]
 
 export function FloatingStickers() {
