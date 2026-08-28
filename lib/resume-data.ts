@@ -73,7 +73,7 @@ export const slides: Slide[] = [
         text: 'Mostly in fintech and healthcare — regulated environments where who can reach what, and the evidence of it, is part of the design.',
       },
       {
-        text: 'Three production AI workflows on top — Claude Code and MCP for secrets provisioning, Kubernetes triage, and documentation search — taking routine toil off engineering teams.',
+        text: 'Claude Code and MCP in production for secrets provisioning, Kubernetes triage, and documentation search — taking routine toil off engineering teams.',
       },
     ],
   },
