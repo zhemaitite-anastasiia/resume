@@ -26,7 +26,7 @@ type Sticker = {
 
 const stickers: Sticker[] = [
   {
-    src: '/stickers/headshot-circle.png',
+    src: '/stickers/headshot-circle-2.png',
     alt: 'Portrait of the candidate',
     drift: true,
     note: 'That\'s me. Platform engineer, Chicago. I spend my days making sure other engineers never have to think about the platform.',
